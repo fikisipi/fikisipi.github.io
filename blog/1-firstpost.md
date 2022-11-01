@@ -8,7 +8,6 @@
 Some facts about me:
 
 * I focus on the songs' lyrics more than their melody. I like various rock & hip-hop stuff but I often forget song names
-* I'm very obsessed with details and probably somewhere on the spectrum
 * I like low-level programming and fiddling with ugly bytes in green terminal screens
 * ... and yet I love optimizing user experience, design & making beautiful products
 * I think distributed computing & system optimization isn't useful for product/app prototypes but it's very fun 
