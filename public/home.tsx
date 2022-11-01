@@ -65,6 +65,14 @@ export default function () {
     name: "twitter:site",
     content: "@fikisipi"
   })
+  useMeta({
+    name: "twitter:title",
+    content: title
+  })
+  useMeta({
+    name: "twitter:description",
+    content: desc
+  })
   let posts = useContext(BlogContext);
   let firstPost = posts[0];
 
