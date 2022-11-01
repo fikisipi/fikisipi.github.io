@@ -12,7 +12,3 @@ Some facts about me:
 * I like low-level programming and fiddling with ugly bytes in green terminal screens
 * ... and yet I love optimizing user experience, design & making beautiful products
 * I think distributed computing & system optimization isn't useful for product/app prototypes but it's very fun 
-
-```python
-asdf
-```
