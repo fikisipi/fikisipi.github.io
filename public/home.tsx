@@ -53,6 +53,18 @@ export default function () {
     name: "og:image",
     content: "https://fikisipi.github.io/blog/opengraph.png"
   })
+  useMeta({
+    name: "twitter:image:src",
+    content: "https://fikisipi.github.io/blog/opengraph.png"
+  })
+  useMeta({
+    name: "twitter:card",
+    content: "summary"
+  })
+  useMeta({
+    name: "twitter:site",
+    content: "@fikisipi"
+  })
   let posts = useContext(BlogContext);
   let firstPost = posts[0];
 
@@ -232,6 +244,7 @@ export default function () {
       tw="mt-20 pt-10 pb-[130px]">
         <div tw="container mx-auto px-2">
           <div
+            title={firstPost.title}
             onClick={() => (window.location.href = firstPost.url)}
             tw="p-4 rounded-2xl grid grid-cols-1 lg:grid-cols-aa justify-items-center lg:justify-items-start cursor-pointer hover:bg-[#ffffff20]"
           >
@@ -290,29 +303,30 @@ export default function () {
       </div>
       <div tw="bg-white py-10 pb-20 text-black">
         <div tw="px-8 mx-auto container grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 relative top-[-100px]">
-          {posts.map((v) => {
+          {posts.map((post) => {
             return (
               <div
-                onClick={() => (window.location.href = v.url)}
+                onClick={() => (window.location.href = post.url)}
+                title={post.title}
                 tw="cursor-pointer rounded-2xl p-4 bg-white hover:bg-gray-200"
                 style={{
                   boxShadow: `0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.09)`,
                 }}
               >
-                <a href={v.url}>
+                <a href={post.url}>
                   <img
-                    src={v.image}
+                    src={post.image}
                     tw="rounded-xl block mx-auto"
                     style={{ width: "100%", maxWidth: 400 }}
                   />
                   <h2 tw="uppercase tracking-wide font-regular text-gray-500 mt-4 text-sm">
-                    {v.time} minute read
+                    {post.time} minute read
                   </h2>
                   <h1 tw="text-indigo-800 my-4 text-xl font-semibold">
-                    {v.title}
+                    {post.title}
                   </h1>
                 </a>
-                <a href={v.url}>{v.desc}</a>
+                <a href={post.url}>{post.desc}</a>
               </div>
             );
           })}
