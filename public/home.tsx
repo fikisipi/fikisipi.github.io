@@ -54,7 +54,7 @@ export default function () {
     content: "https://fikisipi.github.io/blog/opengraph.png"
   })
   useMeta({
-    name: "twitter:image:src",
+    name: "twitter:image",
     content: "https://fikisipi.github.io/blog/opengraph.png"
   })
   useMeta({
