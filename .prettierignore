@@ -1,0 +1,9 @@
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+.cache
+.github
+dist
+public/google*.html
+public/blog
