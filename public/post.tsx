@@ -1,5 +1,8 @@
 //@ts-ignore
 import blog from "blog";
+import { useTitle, useMeta } from "hoofd/preact";
+import * as marked from "marked";
+import * as React from "preact";
 
 export type Post = {
   title: string;
@@ -12,17 +15,16 @@ export type Post = {
 };
 
 export const blogPosts = blog as Post[];
-import { useTitle, useMeta } from "hoofd/preact";
-import * as React from "preact";
-import * as marked from "marked";
 
 export function renderPost(post) {
-  return <div
-  dangerouslySetInnerHTML={{
-    __html: marked.parse(post.markdown),
-  }}
-  className="ppost"
-/>
+  return (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: marked.parse(post.markdown),
+      }}
+      className="ppost"
+    />
+  );
 }
 
 export default function (props: { post: Post }) {

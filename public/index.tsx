@@ -1,3 +1,9 @@
+import Home from "./home";
+import { BlogContext } from "./home";
+import LogoSvg from "./logo2.svg";
+import { blogPosts } from "./post";
+import PostComponent from "./post";
+import { toStatic } from "hoofd/preact";
 import {
   LocationProvider,
   Router,
@@ -6,15 +12,9 @@ import {
   ErrorBoundary,
   prerender as ssr,
 } from "preact-iso";
-import Home from "./home";
+import { PrerenderResult } from "preact-iso/prerender";
 import { tw } from "twind";
 import withTwind from "@twind/wmr";
-import { BlogContext } from "./home";
-import { blogPosts } from "./post";
-import PostComponent from "./post";
-import { PrerenderResult } from "preact-iso/prerender";
-import { toStatic } from "hoofd/preact";
-import LogoSvg from "./logo2.svg";
 
 function Header() {
   return (
@@ -38,21 +38,50 @@ function Header() {
           <img src={LogoSvg} tw="h-[35px]" />
         </a>
         <div tw="flex text-sm font-normal items-center">
-        <form tw="relative">
-          <input placeholder="Search" tw="w-[120px] md:w-[180px] px-2 bg-transparent border-[0px] bg-[#ffffff40] py-1 border-gray-500 rounded-xl"/>
-          <button tw="absolute top-1 right-[5px]">
-<svg xmlns="http://www.w3.org/2000/svg" tw="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-</svg>
-
-          </button>
-        </form>
-        <a href="" tw="ml-1 bg-blue-500 text-white rounded-xl py-1 px-2 font-light">
-          <svg xmlns="http://www.w3.org/2000/svg" tw="inline-block align-middle mr-1 w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-</svg>
-
-            Contact</a>
+          <form tw="relative">
+            <input
+              placeholder="Search"
+              tw="w-[120px] md:w-[180px] px-2 bg-transparent border-[0px] bg-[#ffffff40] py-1 border-gray-500 rounded-xl"
+            />
+            <button tw="absolute top-1 right-[5px]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                tw="w-5 h-5 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                />
+              </svg>
+            </button>
+          </form>
+          <a
+            href=""
+            tw="ml-1 bg-blue-500 text-white rounded-xl py-1 px-2 font-light"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              tw="inline-block align-middle mr-1 w-4 h-4 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
+              />
+            </svg>
+            Contact
+          </a>
         </div>
       </div>
     </div>
@@ -84,9 +113,9 @@ export function App() {
 
   return (
     <LocationProvider>
-      <style>{`.ppost ul {list-style-type: square; margin-left: 20px;} `}</style>
-            
-      <div className={tw`min-h-[100vh] app text-white`}>
+      {/* <style>{`.ppost ul {list-style-type: square; margin-left: 20px;} `}</style> */}
+
+      <div tw={`min-h-[100vh] text-white`}>
         <BlogContext.Provider value={blogPosts}>
           <Header />
           <ErrorBoundary>
@@ -149,16 +178,17 @@ function Footer() {
       <div tw="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
         <div tw="mt-8 flex justify-center space-x-6">
           Privacy | Contact | Go to top
-          {null && navigation.social.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              tw="text-gray-400 hover:text-gray-500"
-            >
-              <span tw="sr-only">{item.name}</span>
-              <item.icon tw="h-6 w-6" aria-hidden="true" />
-            </a>
-          ))}
+          {null &&
+            navigation.social.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                tw="text-gray-400 hover:text-gray-500"
+              >
+                <span tw="sr-only">{item.name}</span>
+                <item.icon tw="h-6 w-6" aria-hidden="true" />
+              </a>
+            ))}
         </div>
         <p tw="mt-8 text-center text-base text-gray-400">
           &copy; 2022 @fikisipi
@@ -174,7 +204,7 @@ const { hydrate, prerender: P } = withTwind(
       extend: {
         gridTemplateColumns: {
           aa: "170px 1fr",
-          bb: "1fr 300px"
+          bb: "1fr 300px",
         },
       },
     },
@@ -198,7 +228,6 @@ async function prerender(data: any): Promise<PrerenderResult> {
       elements,
     },
   };
-  console.log(a);
   return a;
 }
 
