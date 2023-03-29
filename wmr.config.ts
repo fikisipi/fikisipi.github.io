@@ -1,7 +1,6 @@
 import { defineConfig } from 'wmr';
 import postcss from "rollup-plugin-postcss";
-import tailwind from "tailwindcss"
-
+import {parse} from "yaml"
 import fs from "node:fs"
 
 import Sharp from "sharp"
@@ -40,7 +39,18 @@ function resizeImage({ inputFile, outputFile, width, height, blur }: {inputFile:
 	})
   }
 
-import {parse} from "yaml"
+function imageMiddleware(req, res) {
+	let unescapedUrl = decodeURIComponent(req.url!);
+	let q: any = null
+	try {
+		q = fs.readFileSync(`./public${unescapedUrl}`, 'binary')
+	}catch(err) {
+		throw err;
+	}
+	res.writeHead(200, {'Content-Type': 'image/png'});
+	res.write(q, 'binary');
+	res.end();
+}
 
 function blogPlugin() {
 	return {
@@ -64,11 +74,11 @@ function blogPlugin() {
 					url: string,
 					time: number
 				}
-				if(!conf.image.startsWith("/blog/")) {
-					conf.image = `/blog/${conf.image}`
+				if(!conf.image.startsWith("/images/")) {
+					conf.image = `/images/${conf.image}`
 				}
 				if(!fs.existsSync(`./public${conf.image}.resized.png`)) {
-					resizeImage({inputFile: `./public${conf.image}`, outputFile: `./public${conf.image}.resized.png`, width: 400, height: 250, blur: 5}).then(x => {
+					resizeImage({inputFile: `./public${conf.image}`, outputFile: `./public${conf.image}.resized.png`, width: 150, height: 150, blur: 5}).then(x => {
 				})
 				}
 				conf.image = conf.image + ".resized.png"
@@ -100,15 +110,10 @@ export default defineConfig({
 	],
 	middleware: [(req, res, next) => {
 		if(!req.url!.endsWith('.png')) return next();
-		let unescapedUrl = decodeURIComponent(req.url!);
-		let q: any = null
 		try {
-			q = fs.readFileSync(`./public${unescapedUrl}`, 'binary')
+			return imageMiddleware(req, res);
 		}catch(err) {
 			return next()
 		}
-		res.writeHead(200, {'Content-Type': 'image/png'});
-		res.write(q, 'binary');
-		res.end();
 	}]
 });

@@ -16,6 +16,15 @@ import { useTitle, useMeta } from "hoofd/preact";
 import * as React from "preact";
 import * as marked from "marked";
 
+export function renderPost(post) {
+  return <div
+  dangerouslySetInnerHTML={{
+    __html: marked.parse(post.markdown),
+  }}
+  className="ppost"
+/>
+}
+
 export default function (props: { post: Post }) {
   let v = props.post;
   useTitle(v.title);

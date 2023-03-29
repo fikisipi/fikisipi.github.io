@@ -7,31 +7,14 @@ import {
   prerender as ssr,
 } from "preact-iso";
 import Home from "./home";
-import * as React from "preact";
 import { tw } from "twind";
 import withTwind from "@twind/wmr";
-import { createContext } from "preact";
 import { BlogContext } from "./home";
 import { blogPosts } from "./post";
-
-function Logo2() {
-  return (
-    <svg
-      version="1.2"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 436 102"
-      width="152"
-      height="35"
-    >
-      <path
-        fill="#fff"
-        d="m30.8 47.7v-9.4h41.3v9.4zm24.4-27.7v9.7q-0.9 0-1.8 0-0.7 0-1.4 0-2.9 0-3.8 1.6-1 1.7-1 4v39.7h-11.3v-39.7q0-5.5 1.7-8.9 1.8-3.5 5-5.1 3.3-1.7 7.5-1.7 1.2 0 2.5 0.1 1.3 0.1 2.6 0.3zm16.9 55h-11.4v-36.7h11.4zm-5.6-42.5q-2.8 0-4.7-1.9-1.8-1.9-1.8-4.6 0-2.7 1.8-4.5 1.9-1.9 4.7-1.9 2.6 0 4.4 1.9 1.9 1.8 1.9 4.5 0 2.7-1.9 4.6-1.8 1.9-4.4 1.9zm25.5 33.3v9.2h-11.3v-55.5h11.3v31.9l11.9-13.2h14.2l-13.8 14.6 13.4 22.2h-13.1l-8.2-13.8zm42 9.2h-11.3v-36.7h11.3zm-5.7-42.5q-2.8 0-4.7-1.9-1.8-1.9-1.8-4.6 0-2.7 1.8-4.5 1.9-1.9 4.7-1.9 2.6 0 4.4 1.9 2 1.8 2 4.5 0 2.7-2 4.6-1.8 1.9-4.4 1.9zm11.6 30.8h10.7q0.2 2 1.5 3.1 1.4 1.1 4 1.1 2.7 0 3.9-0.9 1.3-0.9 1.3-2.3 0-0.8-0.7-1.6-0.6-0.8-2.6-1.3l-6.8-1.4q-5.1-1.1-7.6-3.6-2.5-2.5-2.5-7.3 0-3.8 2-6.5 2.1-2.7 5.5-4.1 3.5-1.5 7.9-1.5 4.2 0 7.5 1.6 3.3 1.5 5.1 4.3 1.9 2.8 1.9 6.6h-10.8q0-2-1.1-3.1-1.1-1.1-3.1-1.1-1.9 0-3.1 0.9-1.1 0.9-1.1 2.4 0 2.3 4 3.2l6.8 1.5q4.5 0.9 6.9 3.3 2.4 2.3 2.4 6.7 0 3.9-2 6.7-2.1 2.9-5.8 4.4-3.6 1.5-8.4 1.5-7.3 0-11.6-3.4-4.2-3.6-4.2-9.2zm49.2 11.7h-11.3v-36.8h11.3zm-5.7-42.5q-2.7 0-4.6-1.8-1.9-1.9-1.9-4.6 0-2.8 1.9-4.6 1.9-1.8 4.6-1.8 2.6 0 4.5 1.8 1.9 1.8 1.9 4.6 0 2.7-1.9 4.6-1.9 1.8-4.5 1.8zm25.6 60.1h-11.4v-54.3h10.7l0.6 4.4q1.5-2.5 4.8-4.1 3.2-1.5 7.1-1.5 5.1 0 9 2.3 3.9 2.2 6.1 6.5 2.2 4.2 2.2 10.1 0 5.9-2 10.4-2 4.5-5.9 7.1-3.8 2.5-9.3 2.5-3.9 0-7.1-1.3-3.2-1.3-4.8-3.4zm0-36q0 2.7 1.1 4.9 1.2 2 3.2 3.2 2.1 1.1 4.7 1.1 2.7 0 4.6-1.2 2-1.1 3-3.2 1.1-2.1 1.1-4.8 0-2.7-1.1-4.8-1-2-3-3.2-1.9-1.2-4.6-1.2-2.6 0-4.7 1.2-2 1.1-3.2 3.2-1.1 2-1.1 4.8zm47 18.4h-11.3v-36.7h11.3zm-5.7-42.5q-2.8 0-4.7-1.9-1.8-1.9-1.8-4.6 0-2.7 1.8-4.5 1.9-1.9 4.7-1.9 2.6 0 4.4 1.9 2 1.8 2 4.5 0 2.7-2 4.6-1.8 1.9-4.4 1.9z"
-      />
-    </svg>
-  );
-}
-
-import L from "./logo2.svg";
+import PostComponent from "./post";
+import { PrerenderResult } from "preact-iso/prerender";
+import { toStatic } from "hoofd/preact";
+import LogoSvg from "./logo2.svg";
 
 function Header() {
   return (
@@ -48,12 +31,29 @@ function Header() {
     >
       <div
         tw={
-          "container mx-auto px-4 font-semibold text-slate-300 text-xl flex justify-center"
+          "container mx-auto px-4 font-semibold text-slate-300 text-xl flex justify-between"
         }
       >
         <a href="/">
-          <img src={L} tw="h-[35px]" />
+          <img src={LogoSvg} tw="h-[35px]" />
         </a>
+        <div tw="flex text-sm font-normal items-center">
+        <form tw="relative">
+          <input placeholder="Search" tw="w-[120px] md:w-[180px] px-2 bg-transparent border-[0px] bg-[#ffffff40] py-1 border-gray-500 rounded-xl"/>
+          <button tw="absolute top-1 right-[5px]">
+<svg xmlns="http://www.w3.org/2000/svg" tw="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+</svg>
+
+          </button>
+        </form>
+        <a href="" tw="ml-1 bg-blue-500 text-white rounded-xl py-1 px-2 font-light">
+          <svg xmlns="http://www.w3.org/2000/svg" tw="inline-block align-middle mr-1 w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+</svg>
+
+            Contact</a>
+        </div>
       </div>
     </div>
   );
@@ -66,8 +66,6 @@ function NotFound() {
     </div>
   );
 }
-import PostComponent from "./post";
-import { PrerenderResult } from "preact-iso/prerender";
 
 export function App() {
   let routes = (
@@ -86,6 +84,8 @@ export function App() {
 
   return (
     <LocationProvider>
+      <style>{`.ppost ul {list-style-type: square; margin-left: 20px;} `}</style>
+            
       <div className={tw`min-h-[100vh] app text-white`}>
         <BlogContext.Provider value={blogPosts}>
           <Header />
@@ -104,14 +104,6 @@ export function App() {
 }
 
 const navigation = {
-  main: [
-    { name: "About", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Jobs", href: "#" },
-    { name: "Press", href: "#" },
-    { name: "Accessibility", href: "#" },
-    { name: "Partners", href: "#" },
-  ],
   social: [
     {
       name: "Instagram",
@@ -156,7 +148,8 @@ function Footer() {
     <footer tw="">
       <div tw="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
         <div tw="mt-8 flex justify-center space-x-6">
-          {navigation.social.map((item) => (
+          Privacy | Contact | Go to top
+          {null && navigation.social.map((item) => (
             <a
               key={item.name}
               href={item.href}
@@ -174,15 +167,14 @@ function Footer() {
     </footer>
   );
 }
-import { toStatic } from "hoofd/preact";
 
-// import tailwind from "@twind/preset-tailwind"
 const { hydrate, prerender: P } = withTwind(
   {
     theme: {
       extend: {
         gridTemplateColumns: {
-          aa: "500px 1fr",
+          aa: "170px 1fr",
+          bb: "1fr 300px"
         },
       },
     },
@@ -209,8 +201,7 @@ async function prerender(data: any): Promise<PrerenderResult> {
   console.log(a);
   return a;
 }
-export { prerender };
 
-export function setupApp() {
-  hydrate(<App />);
-}
+hydrate(<App />);
+
+export { prerender };

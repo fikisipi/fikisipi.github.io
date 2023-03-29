@@ -1,5 +1,7 @@
 title: Starting a blog
 image: terminal.png
+date: 29 Mar 2023
+tags: ["xax", "Faf"]
 desc: >
   Hi, I'm fikisipi and this is going to be a science/nerdsphere
   and design blog. The name fikisipi is a mashup from 'pikisipi' - a Macedonian rapper and 'fiki' - a Macedonian nickname for my first name.
