@@ -1,5 +1,5 @@
 title: Starting a blog
-image: terminal.png
+image: terminal.png.resized.png
 date: 29 Mar 2023
 tags: ["xax", "Faf"]
 desc: >
