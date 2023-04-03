@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { useEffect, useState } from "react";
 
 let social: any[] = [];
 
@@ -7,14 +8,14 @@ function Ico(props: { h: string }) {
   return (
     <img
       src={props.h}
-      className="border-0 border-gray-600 w-5 h-5 rounded-full inline-block relative fleft-[-25px] ftop-[5px] mr-1 my-2"
+      className="border-0 border-gray-600 w-5 h-5 rounded-full inline-block relative fleft-[-25px] ftop-[5px] mr-2 my-2"
     />
   );
 }
 
 export function Sidebar() {
   return <div
-  className="relative top-[0px] border-l-[1px] border-zinc-200 text-zinc-600 bg-2gradient-to-r from-zinc-300 via-zinc-100 to-zinc-100"
+  className="relative top-[0px] lg:border-l-[1px] border-zinc-200 !text-zinc-600"
   style={{
     // boxShadow2: `5px 0px 10px #000 inset`,
     // back2ground:
@@ -152,7 +153,7 @@ export function Header() {
         }
       >
         <div className="flex justify-end">
-        <a href="/" className="relative left-[50px]">
+        <a href="/" onClick={(e) => {e.preventDefault(); document.location = '/'}} className="relative left-[50px]">
           <img src={"/logo2.svg "} className="h-[35px]" />
         </a>
         </div>
@@ -162,7 +163,7 @@ export function Header() {
             <input
               name="q"
               placeholder="Search"
-              className="w-[140px] max-[400px]:w-[100px] md:w-[180px] text-white outline-none placeholder-[#888] border-[1px] border-[#66666680] ring-2 ring-[#000]/[0.5] px-2 pl-7 bg-[#00000050] py-1 rounded-xl"
+              className="w-[140px] max-[400px]:w-[100px] md:w-[180px] text-white outline-none placeholder-[#888] border-[1px] <md:border-2 border-[#66666680] ring-2 ring-[#000]/[0.5] px-2 pl-7 bg-[#00000050] py-1 rounded-xl"
             />
             <button className="absolute top-[7px] left-[7px]">
               <svg
@@ -211,7 +212,9 @@ export function Header() {
 export default function Document() {
   return (
     <Html lang="en">{"\n"}
-      <Head />{"\n"}
+      <Head>{"\n"}
+      <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+      </Head>{"\n"}
       <body>{"\n"}
         <div className={`min-h-[100vh] text-white `}>
           <Header />

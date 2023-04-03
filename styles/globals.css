@@ -19,18 +19,20 @@ body {
   margin-top: 20px;
   font-weight: 400;
 }
-.sidebar h3::before {
+.sidebar h3::beffore {
   display: inline-block;
   content: "›";
   position: relative;
   font-size: 20px;
   top: 2px;
-  color: #000;
+  color: #999;
   padding-right: 3px;
 }
 .ppost {
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #414f62;
   letter-spacing: 0.32px;
 }
 .ppost ul {

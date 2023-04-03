@@ -1,29 +1,53 @@
 import { useRouter } from 'next/router'
-import {parsePostFile, getAllSlugs, Post} from "@/postApi"
+import {parsePost, getAllSlugs, Post, getPreviousPost} from "@/postApi"
 import { PostComponent } from '@/components/post'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { Sidebar } from '../_document'
 import Head from 'next/head'
+import { useEffect, useState } from 'react'
 
 export const getStaticPaths: GetStaticPaths = async function() {
-    return {fallback: false, paths: getAllSlugs().map(x => ({params: {slug: x}}))}
+    return {
+        fallback: false,
+        paths: getAllSlugs().map(slug => (
+            {params: {slug}}
+    ))}
 }
 
-export const getStaticProps: GetStaticProps = async function(c) {
-    const {slug} = c.params!;
-    if(!slug) {
+
+export const getStaticProps: GetStaticProps<{post?: Post, prevPost?: Post}, {slug: string}> = async function(c) {
+    if(!c.params || !c.params.slug) {
         return {redirect: '/', props: {}}
     }
-    const post = parsePostFile(`${slug}.md`)
+    const {slug} = c.params;
+    const post = parsePost(slug)
+    const prevPost: Post | null = getPreviousPost(slug)
     if(!post) {
         return {redirect: '/', props: {}}
     }
-    return {props: {post}}
+    const prev: {prevPost?: Post} = {}
+    if(prevPost != null) {
+        prev.prevPost = prevPost
+    }
+    return {props: {post, ...prev }}
 }
-const Post = (props: {post: Post}) => {
+
+export default function PostPage (props: {post: Post, prevPost?: Post})  {
 //   const router = useRouter()
 //   const { slug } = router.query
 //   if(!slug || Array.isArray(slug)) return <div>Not found</div>
+
+    const {prevPost} = props;
+
+    let [code, setCode] = useState<any>(null);
+    useEffect(() => {
+        window.commenzeHostname = "fikisipi.github.io-UrrYnxn";
+        window.commenzeThemeName = "Default Theme"
+      setCode(<script src="https://app.commenze.com/embed/comment-section/embedScript.js"></script>);
+      setTimeout(() => {
+        document.dispatchEvent(new Event("load"))
+      }, 1500)
+    }, [code == null, typeof window])
 
     return <>
     <Head>
@@ -36,14 +60,15 @@ const Post = (props: {post: Post}) => {
     <div className='container mx-auto mt-5 lgx:w-[900px]'>
         <PostComponent post={props.post} renderContent={false} />
         </div>
-    <div className='bg-white'>
+    <div className='text-gray-800 bg-white lg:bg-gradient-to-r from-white from-[40%] to-zinc-200 border-t-[1px] border-zinc-800'>
         <div className='mx-auto container grid lg:grid-cols-bb'>
         <div className="px-4 py-10 bg-white text-black" style={{ colorScheme: "light" }}>
-            <PostComponent post={props.post} renderTitle={false} />
+            <PostComponent post={props.post} renderTitle={false} {...({prevPost})} />
             </div>
             <Sidebar/>
         </div>
     </div>
+    {code}
   </>
   return <div>{JSON.stringify(props)}</div>
 //   let post = parsePostFile(slug);
@@ -51,5 +76,3 @@ const Post = (props: {post: Post}) => {
 
 //   return <PostComponent post={post }/>
 }
-
-export default Post

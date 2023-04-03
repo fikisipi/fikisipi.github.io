@@ -16,48 +16,16 @@ export const getStaticProps: GetStaticProps = async function () {
   };
 };
 
+function BoltIcon() {
+  return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="mr-2 align-middle w-12 h-12 inline-block p-2 rounded-full border-2 border-white/[0.2]">
+  <path fillRule="evenodd" d="M14.615 1.595a.75.75 0 01.359.852L12.982 9.75h7.268a.75.75 0 01.548 1.262l-10.5 11.25a.75.75 0 01-1.272-.71l1.992-7.302H3.75a.75.75 0 01-.548-1.262l10.5-11.25a.75.75 0 01.913-.143z" clipRule="evenodd" />
+</svg>
+}
 export default function A(props: any) {
   let [desc, title] = [
     "distributed programming & product development",
     "fikisipi",
   ];
-  // useTitle(title);
-  // useMeta({
-  //   name: "description",
-  //   content: desc,
-  // });
-  // useMeta({
-  //   name: "og:title",
-  //   content: title,
-  // });
-  // useMeta({
-  //   name: "og:description",
-  //   content: desc,
-  // });
-  // useMeta({
-  //   name: "og:image",
-  //   content: "https://fikisipi.github.io/blog/opengraph.png",
-  // });
-  // useMeta({
-  //   name: "twitter:image",
-  //   content: "https://fikisipi.github.io/blog/opengraph.png",
-  // });
-  // useMeta({
-  //   name: "twitter:card",
-  //   content: "summary",
-  // });
-  // useMeta({
-  //   name: "twitter:site",
-  //   content: "@fikisipi",
-  // });
-  // useMeta({
-  //   name: "twitter:title",
-  //   content: title,
-  // });
-  // useMeta({
-  //   name: "twitter:description",
-  //   content: desc,
-  // });
   let posts: Post[] = props.posts;
   let firstPost = posts[0];
 
@@ -83,11 +51,13 @@ export default function A(props: any) {
         }
       >
         <div className="text-3xl font-bold mt-6 pb-6 text-white">
-          I build software
+          <BoltIcon />
+          <div className="inline-block align-middle">I build software</div>
         </div>
-        web development & distributed computing using{" "}
-        <span className={"font-bold2"}>Go, Python and TypeScript</span>.<br />I
-        also care about building "user-first" stuff & product design.
+        distributed computing & web&nbsp;development in{" "}
+        <span className={"font-bold2"}>Go,&nbsp;Python&nbsp;and&nbsp;TypeScript</span>.<br />
+        <div className="hidden md:block">I
+        also care about building "user-first" stuff & product design.</div>
         <div className="hidden text-sm mt-10 mb-10 tracking-wide font-normal flex flex-colx md:flex-row mx-auto justify-center">
           <a
             href=""
@@ -127,11 +97,11 @@ export default function A(props: any) {
           </a>
         </div>
       </div>
-      <div className="text-gray-800 mt-5 bg-white border-t-[1px] border-zinc-800">
+      <div className="text-gray-800 mt-5 bg-white lg:bg-gradient-to-r from-white from-[40%] to-zinc-200 border-t-[1px] border-zinc-800">
         <div className="mx-auto container grid lg:grid-cols-bb">
           <div className="px-4 py-10 bg-white" style={{ colorScheme: "light" }}>
             {posts.map((post) => {
-              return <PostComponent post={post} key={post.slug} />
+              return <div className="mb-10" key={post.slug}><PostComponent post={post}/></div>
             })}
           </div>
           <Sidebar/>
