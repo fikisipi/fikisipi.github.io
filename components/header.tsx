@@ -31,7 +31,7 @@ export function Header() {
           </div>
           <div className="flex justify-end">
             <div className="flex text-sm font-normal items-center">
-              <form className="relative" action="/">
+              <form className="relative" action="/search">
                 <input
                   name="q"
                   placeholder="Search"
