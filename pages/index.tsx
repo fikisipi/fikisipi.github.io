@@ -17,9 +17,20 @@ export const getStaticProps: GetStaticProps = async function () {
 };
 
 function BoltIcon() {
-  return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="mr-2 align-middle w-12 h-12 inline-block p-2 rounded-full border-2 border-white/[0.2]">
-  <path fillRule="evenodd" d="M14.615 1.595a.75.75 0 01.359.852L12.982 9.75h7.268a.75.75 0 01.548 1.262l-10.5 11.25a.75.75 0 01-1.272-.71l1.992-7.302H3.75a.75.75 0 01-.548-1.262l10.5-11.25a.75.75 0 01.913-.143z" clipRule="evenodd" />
-</svg>
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="mr-2 align-middle w-12 h-12 inline-block p-2 rounded-full border-2 border-white/[0.2]"
+    >
+      <path
+        fillRule="evenodd"
+        d="M14.615 1.595a.75.75 0 01.359.852L12.982 9.75h7.268a.75.75 0 01.548 1.262l-10.5 11.25a.75.75 0 01-1.272-.71l1.992-7.302H3.75a.75.75 0 01-.548-1.262l10.5-11.25a.75.75 0 01.913-.143z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
 }
 export default function A(props: any) {
   let [desc, title] = [
@@ -31,19 +42,33 @@ export default function A(props: any) {
 
   return (
     <>
-    <Head>
-      <title>fikisipi</title>
-      <meta content="fikisipi" name="twitter:title" />
-      <meta content="@fikisipi" name="twitter:site" />
-      <meta content="summary" name="twitter:card" />
-      <meta content="https://fikisipi.github.io/opengraph.png" name="twitter:image" />
-      <meta content="https://fikisipi.github.io/opengraph.png" name="og:image" />
-      <meta content="distributed programming &amp; web development" name="twitter:description" />
-      <meta content="distributed programming &amp; web development" name="description" />
-      <meta content="distributed programming &amp; web development" name="og:description" />
-      <meta content="fikisipi" name="og:title" />
-    </Head>
-      {" "}
+      <Head>
+        <title>fikisipi</title>
+        <meta content="fikisipi" name="twitter:title" />
+        <meta content="@fikisipi" name="twitter:site" />
+        <meta content="summary" name="twitter:card" />
+        <meta
+          content="https://fikisipi.github.io/opengraph.png"
+          name="twitter:image"
+        />
+        <meta
+          content="https://fikisipi.github.io/opengraph.png"
+          name="og:image"
+        />
+        <meta
+          content="distributed programming &amp; web development"
+          name="twitter:description"
+        />
+        <meta
+          content="distributed programming &amp; web development"
+          name="description"
+        />
+        <meta
+          content="distributed programming &amp; web development"
+          name="og:description"
+        />
+        <meta content="fikisipi" name="og:title" />
+      </Head>{" "}
       <div
         className={
           "container px-4 mx-auto mt-6 text-center text-lg font-light text-gray-400 " +
@@ -55,9 +80,13 @@ export default function A(props: any) {
           <div className="inline-block align-middle">I build software</div>
         </div>
         distributed computing & web&nbsp;development in{" "}
-        <span className={"font-bold2"}>Go,&nbsp;Python&nbsp;and&nbsp;TypeScript</span>.<br />
-        <div className="hidden md:block">I
-        also care about building "user-first" stuff & product design.</div>
+        <span className={"font-bold2"}>
+          Go,&nbsp;Python&nbsp;and&nbsp;TypeScript
+        </span>
+        .<br />
+        <div className="hidden md:block">
+          I also care about building "user-first" stuff & product design.
+        </div>
         <div className="hidden text-sm mt-10 mb-10 tracking-wide font-normal flex flex-colx md:flex-row mx-auto justify-center">
           <a
             href=""
@@ -101,10 +130,14 @@ export default function A(props: any) {
         <div className="mx-auto container grid lg:grid-cols-bb">
           <div className="px-4 py-10 bg-white" style={{ colorScheme: "light" }}>
             {posts.map((post) => {
-              return <div className="mb-10" key={post.slug}><PostComponent post={post}/></div>
+              return (
+                <div className="mb-10" key={post.slug}>
+                  <PostComponent post={post} />
+                </div>
+              );
             })}
           </div>
-          <Sidebar/>
+          <Sidebar />
         </div>
       </div>
     </>
@@ -113,7 +146,7 @@ export default function A(props: any) {
 
 export function NotFound() {
   return (
-    <div className="container mx-auto px-8 py-6 rounded-lg bg-white text-black mt-10">
+    <div className="container mx-auto px-8 py-6 rounded-lg bg-black text-black mt-10">
       Not found.
     </div>
   );

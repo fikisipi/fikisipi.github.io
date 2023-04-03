@@ -1,63 +1,81 @@
 let blog: any[] = [];
-import type {Post} from "@/postApi"
-import {Roboto} from "next/font/google"
+import type { Post } from "@/postApi";
+import { Roboto } from "next/font/google";
 
-const R = Roboto({weight: ["300", "400"], subsets: ["latin"]});
+const R = Roboto({ weight: ["300", "400"], subsets: ["latin"] });
 
 //@ts-ignore
 import * as marked from "marked";
 import { useEffect } from "react";
 
-export function PostComponent(props: {post: Post, prevPost?: Post, renderContent?: boolean, renderTitle?: boolean, footer?: boolean}) {
-  const {post} = props;
+export function PostComponent(props: {
+  post: Post;
+  prevPost?: Post;
+  renderContent?: boolean;
+  renderTitle?: boolean;
+  footer?: boolean;
+}) {
+  const { post } = props;
 
-  const singlePage = props.renderContent !== false && props.renderTitle === false;
-  let footer = <></>
+  const singlePage =
+    props.renderContent !== false && props.renderTitle === false;
+  let footer = <></>;
   useEffect(() => {
-    if(singlePage) {
+    if (singlePage) {
       //@ts-ignore
       // let box = commentBox("5709383216398336-proj", {buttonColor: "blue"})
       // return () => box();
     }
-  }, [])
-  if(singlePage) {
-    footer = <>
-    <div id="commenze_commentSection"></div>
-    <div className="commentbox"></div></>
+  }, []);
+  if (singlePage) {
+    footer = (
+      <>
+        <div id="commenze_commentSection"></div>
+        <div className="commentbox"></div>
+      </>
+    );
   }
 
-  if(props.renderContent === false) {
-    return <div className="pb-10 px-4">
-      <div className="grid lg:grid-cols-singlePost justify-items-center lg:justify-items-start">
-      <img src={post.imageLinks!.wide} className="block w-full max-w-[400px] rounded-xl"/>
-      <div className="text-center pt-4">
-        <h1 className="text-3xl font-bold mt-4">{props.post.title}</h1>
-        <div className="my-2">
-        <div className="uppercase mb-2 tracking-wide text-gray-400 h-[25px]">
-            {post.date}
-          </div>
+  if (props.renderContent === false) {
+    return (
+      <div className="pb-10 px-4">
+        <div className="grid lg:grid-cols-singlePost justify-items-center lg:justify-items-start">
+          <img
+            src={post.imageLinks!.wide}
+            className="block w-full max-w-[400px] rounded-xl"
+          />
+          <div className="text-center pt-4">
+            <h1 className="text-3xl font-bold mt-4">{props.post.title}</h1>
+            <div className="my-2">
+              <div className="uppercase mb-2 tracking-wide text-gray-400 h-[25px]">
+                {post.date}
+              </div>
 
-        {post.tags.map((x) => {
-              return (
-                <a
-                  href={"#"}
-                  key={x}
-                  className="text-sm px-2 py-[4px] text-zinc-400 bfg-gray-200 md:border-[1px] border-2 border-[#ffffff28] font-regular text-black rounded-xl mr-2"
-                >
-                  {x}
-                </a>
-              );
-            })}
-        </div>
+              {post.tags.map((x) => {
+                return (
+                  <a
+                    href={"#"}
+                    key={x}
+                    className="text-sm px-2 py-[4px] text-zinc-400 bfg-gray-200 md:border-[1px] border-2 border-[#ffffff28] font-regular text-black rounded-xl mr-2"
+                  >
+                    {x}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    );
   }
   return (
     <>
       <div
         title={post.title}
-        className={"px-0 rounded-2xl flex gap-4 <md:items-center mb-6 " + (props.renderTitle === false ? "hidden" : "")}
+        className={
+          "px-0 rounded-2xl flex gap-4 <md:items-center mb-6 " +
+          (props.renderTitle === false ? "hidden" : "")
+        }
       >
         <img
           src={post.imageLinks!.square}
@@ -71,7 +89,15 @@ export function PostComponent(props: {post: Post, prevPost?: Post, renderContent
               textShadow: "2px 2px 0px #00000050f",
             }}
           >
-            <a href={post.url} onClick={(e) => {e.preventDefault(); document.location = post.url!}}>{post.title}</a>
+            <a
+              href={post.url}
+              onClick={(e) => {
+                e.preventDefault();
+                document.location = post.url!;
+              }}
+            >
+              {post.title}
+            </a>
           </h2>
           <div className="uppercase tracking-wide text-gray-400 h-[25px]">
             {post.date}
@@ -98,7 +124,7 @@ export function PostComponent(props: {post: Post, prevPost?: Post, renderContent
       </div>
       {
         /* @ts-ignore */
-      props.renderContent !== false ? renderMarkdown(post) : null
+        props.renderContent !== false ? renderMarkdown(post) : null
       }
       {footer}
     </>

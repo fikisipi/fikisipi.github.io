@@ -13,7 +13,7 @@ module.exports = {
       gridTemplateColumns: {
         aa: "170px 1fr",
         bb: "1fr 300px",
-        singlePost: "500px 1fr"
+        singlePost: "500px 1fr",
       },
     },
   },
