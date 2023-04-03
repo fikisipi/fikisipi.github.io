@@ -138,7 +138,7 @@ export function PostComponent(props: {
         props.renderContent !== false ? renderMarkdown(post) : null
       }
       <div className="mt-6 relative">
-        <a href={`https://news.ycombinator.com/submitlink?t=a&u=asd`} className="text-xs font-semibold px-2 py-1 rounded bg-orange-100 text-orange-500">
+        <a href={`https://news.ycombinator.com/submitlink?t=${encodeURIComponent(post.title)}&u=${encodeURIComponent(domainName + post.url)}`} className="text-xs font-semibold px-2 py-1 rounded bg-orange-100 text-orange-500">
         <svg
   className="w-3 h-3 inline-block align-middle mr-2"
   viewBox="0 0 256 256"
