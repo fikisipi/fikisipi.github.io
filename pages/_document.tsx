@@ -16,9 +16,9 @@ export function Sidebar() {
   return <div
   className="relative top-[0px] border-l-[1px] border-zinc-200 text-zinc-600 bg-2gradient-to-r from-zinc-300 via-zinc-100 to-zinc-100"
   style={{
-    boxShadow2: `5px 0px 10px #000 inset`,
-    back2ground:
-      "url(https://images.hdqwalls.com/wallpapers/dark-abstract-blur-4k-on.jpg) no-repeat",
+    // boxShadow2: `5px 0px 10px #000 inset`,
+    // back2ground:
+    //   "url(https://images.hdqwalls.com/wallpapers/dark-abstract-blur-4k-on.jpg) no-repeat",
     backgroundSize: "cover",
   }}
 >
@@ -140,8 +140,8 @@ export function Header() {
         "sticky py-4 w-full top-0 border-b-[1px] border-[#ffffff28] z-40 bg-[#00000090]"
       }
       style={{
-        backgroundf:
-          "radial-gradient(at center top, #4e4363a0, #1D1726A0, #000000a0)",
+        // backgroundf:
+        //   "radial-gradient(at center top, #4e4363a0, #1D1726A0, #000000a0)",
         backdropFilter: "blur(3px)",
         WebkitBackdropFilter: "blur(3px)",
       }}

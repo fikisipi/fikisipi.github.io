@@ -16,7 +16,7 @@ export const getStaticProps: GetStaticProps = async function () {
   };
 };
 
-export default function A(props) {
+export default function A(props: any) {
   let [desc, title] = [
     "distributed programming & product development",
     "fikisipi",
