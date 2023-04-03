@@ -16,6 +16,8 @@ export type Post = {
   slug?: string;
 };
 
+import { postSourceDir, imageSourceDir, imageOutDir, imageOutLink, postOutLink } from "./const";
+
 function pathToSlug(fpath: string) {
   return path.basename(fpath).replace(".md", "");
 }
@@ -43,13 +45,6 @@ export function getAllTags() {
 export function getAllSlugs() {
   return getPosts().map((x) => x.slug!);
 }
-
-const postSourceDir = "./_posts";
-const postOutLink = "/blog";
-
-const imageSourceDir = "./_posts/images";
-const imageOutDir = "./public/images";
-const imageOutLink = "/images";
 
 function resizeImages() {
   let fs = require("fs");

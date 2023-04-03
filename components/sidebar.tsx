@@ -88,7 +88,7 @@ export function Sidebar(props: {allTags?: string[]}) {
           Filter tags
         </h3>
         <div>
-        {props.allTags ? props.allTags.map(x => (<a href={"/tag/" + x} className="border-b-2 border-zinc-400 !inline mr-2">{x}</a>)) : null}
+        {props.allTags ? props.allTags.map(x => (<a href={"/tag/" + x} key={x} className="border-b-2 border-zinc-400 !inline mr-2">{x}</a>)) : null}
         </div>
       </div>
     </aside>

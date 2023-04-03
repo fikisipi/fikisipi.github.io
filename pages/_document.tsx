@@ -10,7 +10,9 @@ export default function Document() {
   return (
     <Html lang="en">
       {"\n"}
-      <Head>{"\n"}</Head>
+      <Head>
+        {"\n"}
+        </Head>
       {"\n"}
       <body>
         {"\n"}

@@ -20,6 +20,9 @@ body {
   display: block;
   font-weight: 500;
 }
+.fb-like {
+  z-index: 10;
+}
 .sidebar a:hover {
   background: #99999930;
 }
