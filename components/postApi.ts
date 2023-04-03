@@ -1,5 +1,8 @@
 import { parse } from "yaml";
 import Sharp from "sharp";
+import fs from "fs"
+import path from "path"
+import {globSync} from "glob"
 
 export type Post = {
   title: string;
@@ -13,19 +16,28 @@ export type Post = {
   slug?: string;
 };
 
-export function getPosts() {
+function pathToSlug(fpath: string) {
+  return path.basename(fpath).replace(".md", "");
+}
+
+export function getPosts(tags?: string[]) {
   resizeImages();
-  let fs = require("fs");
   let output: Post[] = [];
-  fs.readdirSync(`${postSourceDir}`).forEach((file: string) => {
-    if (!file.endsWith(".md")) return;
-    const slug = file.replace(".md", "");
+  globSync(`${postSourceDir}/*.md`, {}).forEach((filePath: string) => {
+    const slug = pathToSlug(filePath)
     let post = parsePost(slug);
     if (post === null) return;
+    if(tags && tags.length > 0 && !tags.some((x) => post!.tags.includes(x))) return;
     output.push(post);
   });
   output.sort((a, b) => b.slug!.localeCompare(a.slug!));
   return output;
+}
+
+export function getAllTags() {
+  let tagSet = new Set(getPosts().flatMap((x) => x.tags));
+  // return tagSet as an array
+  return Array.from(tagSet);
 }
 
 export function getAllSlugs() {
@@ -70,15 +82,27 @@ function resizeImages() {
     }
   });
 }
-export function parsePost(slug: string): Post | null {
-  let fs = require("fs");
 
+export function parsePost(slug: string): Post | null {
   const file = `${slug}.md`;
 
   if (fs.existsSync(`${postSourceDir}/${file}`) === false) return null;
 
   let content = fs.readFileSync(`${postSourceDir}/${file}`, "utf8").toString();
   let conf = parse(content.split("---")[0]) as Post;
+  if(!conf.image) {
+    conf.image = "default.png";
+  }
+  if(!conf.title) {
+    conf.title = "Untitled post"
+  }
+  if(!conf.tags) {
+    conf.tags = []
+  }
+  if(!conf.date) {
+    let T = fs.statSync(`${postSourceDir}/${file}`).ctime;
+    conf.date = `${T.getDate()} ${T.toLocaleDateString("en-us", {month: "short"})} ${T.getFullYear()}`
+  }
   conf.imageLinks = {
     square: `${imageOutLink}/${conf.image}.square.png`,
     wide: `${imageOutLink}/${conf.image}.wide.png`,
@@ -94,6 +118,7 @@ export function parsePost(slug: string): Post | null {
   return conf;
 }
 
+// TODO: optimize
 export function getPreviousPost(slug: string) {
   let posts = getPosts();
   let index = posts.findIndex((x) => x.slug === slug);

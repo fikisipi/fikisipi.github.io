@@ -7,7 +7,7 @@ function Ico(props: { h: string }) {
   );
 }
 
-export function Sidebar() {
+export function Sidebar(props: {allTags?: string[]}) {
   return (
     <aside
       className="relative top-[0px] lg:border-l-[1px] border-zinc-200 !text-zinc-600"
@@ -84,6 +84,12 @@ export function Sidebar() {
           <Ico h="https://www.youtube.com/s/desktop/f06ee14b/img/favicon_48x48.png" />
           Jonathan Blow
         </a>
+        <h3 className="font-medium border-b-0 border-gray-200 mb-2 rounded-l-md">
+          Filter tags
+        </h3>
+        <div>
+        {props.allTags ? props.allTags.map(x => (<a href={"/tag/" + x} className="border-b-2 border-zinc-400 !inline mr-2">{x}</a>)) : null}
+        </div>
       </div>
     </aside>
   );

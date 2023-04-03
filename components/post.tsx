@@ -20,13 +20,6 @@ export function PostComponent(props: {
   const singlePage =
     props.renderContent !== false && props.renderTitle === false;
   let footer = <></>;
-  useEffect(() => {
-    if (singlePage) {
-      //@ts-ignore
-      // let box = commentBox("5709383216398336-proj", {buttonColor: "blue"})
-      // return () => box();
-    }
-  }, []);
   if (singlePage) {
     footer = (
       <>
@@ -54,7 +47,7 @@ export function PostComponent(props: {
               {post.tags.map((x) => {
                 return (
                   <a
-                    href={"#"}
+                    href={"/tag/" + x}
                     key={x}
                     className="hover:ring-2 ring-indigo-500 text-sm px-2 py-[4px] text-zinc-400 md:border-[1px] border-2 border-[#ffffff28] font-regular text-black rounded-xl mr-2"
                   >
@@ -84,7 +77,7 @@ export function PostComponent(props: {
 
         <div className="flex flex-col gap-2 h-full">
           <h2
-            className="text-4xl font-bold text-gray-800 hover:text-gray-600"
+            className="text-3xl font-bold text-gray-800 hover:text-gray-600"
             style={{
               textShadow: "2px 2px 0px #00000050f",
             }}
@@ -111,7 +104,7 @@ export function PostComponent(props: {
             {post.tags.map((x) => {
               return (
                 <a
-                  href={"#"}
+                  href={"/tag/" + x}
                   key={x}
                   className="hover:text-indigo-500 hover:border-indigo-500 text-sm px-2 py-[4px] text-zinc-500 bfg-gray-200 md:border-[1px] border-2 border-zinc-300 font-regular text-black rounded-xl mr-2"
                 >
@@ -131,6 +124,64 @@ export function PostComponent(props: {
   );
 }
 
+export function PostComponent2(props: {
+  post: Post;
+}) {
+  const { post } = props;
+  return (
+    <>
+      <article
+        title={post.title}
+        className={
+          "px-8 rounded-2xl flex gap-4 <md:items-center mxb-6 mt-[-20px] relative bg-gradient-to-b from-white to-zinc-200 pb-14 pt-8 "
+        }
+      >
+
+        <div className="flex flex-col gap-2 h-full">
+          <h2
+            className="text-4xl font-bold text-gray-800 hover:text-gray-600"
+            style={{
+              textShadow: "2px 2px 0px #00000050f",
+            }}
+          >
+            <a
+              href={post.url}
+              onClick={(e) => {
+                e.preventDefault();
+                document.location = post.url!;
+              }}
+            >
+              {post.title}
+            </a>
+          </h2>
+          <div className="uppercase tracking-wide text-gray-600 h-[25px]">
+            {post.date}
+          </div>
+          <div
+            className="fmax-w-[600px] fh-[82px] foverflow-hidden font-light text-lg"
+            style={{
+              textOverflow: "fade",
+            }}
+          >
+            {post.tags.map((x) => {
+              return (
+                <a
+                  href={"/tag/" + x}
+                  key={x}
+                  className="hover:text-indigo-500 hover:border-indigo-500 text-sm px-2 py-[4px] text-zinc-800 bfg-gray-200 md:border-[1px] border-2 border-zinc-400 font-regular text-black rounded-xl mr-2"
+                >
+                  {x}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </article>
+      {renderMarkdown2(post)}
+    </>
+  );
+}
+
 export const blogPosts = blog as Post[];
 export function renderMarkdown(post: Post) {
   return (
@@ -140,5 +191,20 @@ export function renderMarkdown(post: Post) {
       }}
       className={"ppost " + R.className}
     />
+  );
+}
+
+export function renderMarkdown2(post: Post) {
+  return (
+    <div       className={"bg-white px-4 py-4 mx-8 pt-[10px] shadow-xl rounded-xl relative top-[-50px] z-10 ppost " + R.className}>
+      <img src={post.imageLinks?.square} className="float-left rounded-xl mr-8"/>
+    <div
+      dangerouslySetInnerHTML={{
+        __html: marked.parse(post.markdown),
+      }}
+    />
+
+    <div style={{clear: "both"}} />
+    </div>
   );
 }

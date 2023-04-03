@@ -1,17 +1,20 @@
 // import LogoSvg from "./logo2.svg";
 import type { GetStaticProps } from "next";
 import { Inter } from "next/font/google";
-import { getPosts, Post } from "@/components/postApi";
-import { PostComponent } from "@/components/post";
+import { getAllTags, getPosts, Post } from "@/components/postApi";
+import { PostComponent, PostComponent2 } from "@/components/post";
 import { Sidebar } from "./_document";
 import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const getStaticProps: GetStaticProps = async function () {
+export type StaticProps = {posts: Post[], extraTitle?: string, allTags?: string[]}
+
+export const getStaticProps: GetStaticProps<StaticProps> = async function () {
   return {
     props: {
       posts: getPosts(),
+      allTags: getAllTags()
     },
   };
 };
@@ -32,13 +35,12 @@ function BoltIcon() {
     </svg>
   );
 }
-export default function A(props: any) {
+export default function A(props: StaticProps) {
   let [desc, title] = [
     "distributed programming & product development",
     "fikisipi",
   ];
   let posts: Post[] = props.posts;
-  let firstPost = posts[0];
 
   return (
     <>
@@ -129,6 +131,7 @@ export default function A(props: any) {
       <div className="text-gray-800 mt-5 bg-white lg:bg-gradient-to-r from-white from-[40%] to-zinc-200 border-t-[1px] border-zinc-800">
         <div className="mx-auto container grid lg:grid-cols-bb">
           <div className="px-4 py-10 bg-white" style={{ colorScheme: "light" }}>
+            {props.extraTitle ? <h3 className="text-2xl font-light mb-10 border-b-2 border-zinc-300 text-zinc-500">{props.extraTitle}</h3> : null}
             {posts.map((post) => {
               return (
                 <div className="mb-10" key={post.slug}>
@@ -137,7 +140,7 @@ export default function A(props: any) {
               );
             })}
           </div>
-          <Sidebar />
+          <Sidebar allTags={props.allTags}/>
         </div>
       </div>
     </>

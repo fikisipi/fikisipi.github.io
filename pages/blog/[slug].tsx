@@ -4,12 +4,14 @@ import {
   getAllSlugs,
   Post,
   getPreviousPost,
+  getAllTags,
 } from "@/components/postApi";
 import { PostComponent } from "@/components/post";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Sidebar } from "../_document";
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import { StaticProps } from "..";
 
 export const getStaticPaths: GetStaticPaths = async function () {
   return {
@@ -18,8 +20,7 @@ export const getStaticPaths: GetStaticPaths = async function () {
   };
 };
 
-export const getStaticProps: GetStaticProps<
-  { post?: Post; prevPost?: Post },
+export const getStaticProps: GetStaticProps<Partial<StaticProps>,
   { slug: string }
 > = async function (c) {
   if (!c.params || !c.params.slug) {
@@ -31,14 +32,15 @@ export const getStaticProps: GetStaticProps<
   if (!post) {
     return { redirect: "/", props: {} };
   }
-  const prev: { prevPost?: Post } = {};
+  const prev: { prevPost?: Post, allTags?: string[] } = {};
   if (prevPost != null) {
     prev.prevPost = prevPost;
   }
+  prev.allTags = getAllTags()
   return { props: { post, ...prev } };
 };
 
-export default function PostPage(props: { post: Post; prevPost?: Post }) {
+export default function PostPage(props: { post: Post; prevPost?: Post, allTags?: string[] }) {
   const { prevPost } = props;
 
   return (
@@ -65,7 +67,7 @@ export default function PostPage(props: { post: Post; prevPost?: Post }) {
               {...{ prevPost }}
             />
           </div>
-          <Sidebar />
+          <Sidebar allTags={props.allTags} />
         </div>
       </div>
     </>
