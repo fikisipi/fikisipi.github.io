@@ -7,7 +7,7 @@
 :root,
 body {
   color-scheme: dark;
-  background: #000;
+  background: #000 !important;
 }
 .sidebar {
   color-scheme: light;
