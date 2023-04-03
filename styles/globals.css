@@ -34,7 +34,7 @@ body {
   line-height: 22px;
   font-weight: 400;
   color: #414f62;
-  letter-spacing: 0.32px;
+  /* letter-spacing: 0.32px; */
 }
 .ppost ul {
   list-style-type: square;
