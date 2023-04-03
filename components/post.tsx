@@ -1,5 +1,5 @@
 let blog: any[] = [];
-import type { Post } from "@/postApi";
+import type { Post } from "@/components/postApi";
 import { Roboto } from "next/font/google";
 
 const R = Roboto({ weight: ["300", "400"], subsets: ["latin"] });

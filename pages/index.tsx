@@ -1,7 +1,7 @@
 // import LogoSvg from "./logo2.svg";
 import type { GetStaticProps } from "next";
 import { Inter } from "next/font/google";
-import { getPosts, Post } from "@/postApi";
+import { getPosts, Post } from "@/components/postApi";
 import { PostComponent } from "@/components/post";
 import { Sidebar } from "./_document";
 import Head from "next/head";
