@@ -1,11 +1,15 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
-import { Inter } from 'next/font/google'
-import type {GetStaticProps, GetServerSideProps} from 'next'
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import { Inter } from "next/font/google";
+import type { GetStaticProps, GetServerSideProps } from "next";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
-  return <div className={inter.className}><Component {...pageProps} /></div>
+  return (
+    <div className={inter.className} key="inter">
+      <Component {...pageProps} />
+    </div>
+  );
 }

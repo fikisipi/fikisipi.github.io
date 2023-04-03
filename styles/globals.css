@@ -4,21 +4,34 @@
 :root {
   font-family: system-ui, sans-serif;
 }
-:root, body {
+:root,
+body {
   color-scheme: dark;
+}
+.sidebar {
+  color-scheme: light;
 }
 .sidebar a {
   display: block;
+  font-weight: 500;
 }
 .sidebar h3 {
   margin-top: 20px;
-  font-weight: 500;
+  font-weight: 400;
+}
+.sidebar h3::before {
+  display: inline-block;
+  content: "›";
+  position: relative;
+  font-size: 20px;
+  top: 2px;
+  color: #000;
+  padding-right: 3px;
 }
 .ppost {
   font-size: 16px;
   line-height: 24px;
   letter-spacing: 0.32px;
-
 }
 .ppost ul {
   list-style-type: square;

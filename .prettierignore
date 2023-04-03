@@ -8,3 +8,4 @@ dist
 public/google*.html
 public/blog
 .next
+posts/*.md

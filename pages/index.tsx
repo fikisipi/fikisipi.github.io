@@ -1,25 +1,20 @@
 // import LogoSvg from "./logo2.svg";
-import {renderPost} from "./post"
-import type { GetStaticProps } from "next"
-import { Inter } from 'next/font/google'
-import {getPosts} from "@/posts"
+import type { GetStaticProps } from "next";
+import { Inter } from "next/font/google";
+import { getPosts, Post } from "@/postApi";
+import { PostComponent } from "@/components/post";
+import { Sidebar } from "./_document";
+import Head from "next/head";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const getStaticProps: GetStaticProps = async function () {
-  return {props: {
-    posts: getPosts()
-  }}
-}
-
-function Ico(props: { h: string }) {
-  return (
-    <img
-      src={props.h}
-      className="border-0 border-gray-600 w-5 h-5 rounded-full inline-block relative fleft-[-25px] ftop-[5px] mr-1 my-2"
-    />
-  );
-}
+  return {
+    props: {
+      posts: getPosts(),
+    },
+  };
+};
 
 export default function A(props) {
   let [desc, title] = [
@@ -63,7 +58,7 @@ export default function A(props) {
   //   name: "twitter:description",
   //   content: desc,
   // });
-  let posts: any[] = props.posts;
+  let posts: Post[] = props.posts;
   let firstPost = posts[0];
 
   posts.map((x) => {
@@ -72,20 +67,35 @@ export default function A(props) {
 
   return (
     <>
+    <Head>
+      <title>fikisipi</title>
+      <meta content="fikisipi" name="twitter:title" />
+      <meta content="@fikisipi" name="twitter:site" />
+      <meta content="summary" name="twitter:card" />
+      <meta content="https://fikisipi.github.io/opengraph.png" name="twitter:image" />
+      <meta content="https://fikisipi.github.io/opengraph.png" name="og:image" />
+      <meta content="distributed programming &amp; web development" name="twitter:description" />
+      <meta content="distributed programming &amp; web development" name="description" />
+      <meta content="distributed programming &amp; web development" name="og:description" />
+      <meta content="fikisipi" name="og:title" />
+    </Head>
       {" "}
       <div
         className={
-          "container px-4 mx-auto mt-6 text-center text-lg font-light text-gray-400 " + inter.className
+          "container px-4 mx-auto mt-6 text-center text-lg font-light text-gray-400 " +
+          inter.className
         }
       >
-        <div className="text-3xl font-bold mt-4 pb-2 text-white">I build software</div>
-        especially web development & distributed computing using{" "}
-        <span className={"font-bold2"}>Go, Python and TypeScript</span>.<br />I also
-        care about building "user-first" stuff & product design.
-        <div className="text-sm mt-5 tracking-wide font-normal flex flex-colx md:flex-row mx-auto justify-center">
+        <div className="text-3xl font-bold mt-6 pb-6 text-white">
+          I build software
+        </div>
+        web development & distributed computing using{" "}
+        <span className={"font-bold2"}>Go, Python and TypeScript</span>.<br />I
+        also care about building "user-first" stuff & product design.
+        <div className="hidden text-sm mt-10 mb-10 tracking-wide font-normal flex flex-colx md:flex-row mx-auto justify-center">
           <a
             href=""
-            className="block text-blue-300 mr-2 align-middle p-2 border-[1px] border-gray-600 rounded-xl"
+            className="block text-white mr-2 align-middle p-2 border-[1px] border-gray-600 rounded-xl"
           >
             @fikisipi on
             <svg
@@ -101,7 +111,7 @@ export default function A(props) {
           </a>
           <a
             href=""
-            className="block text-blue-300 mr-2 align-middle p-2 border-[1px] border-gray-600 rounded-xl"
+            className="block text-white mr-2 align-middle p-2 border-[1px] border-gray-600 rounded-xl"
           >
             @fikisipi on
             <svg
@@ -121,149 +131,14 @@ export default function A(props) {
           </a>
         </div>
       </div>
-      
-      <div className="bgd-white text-gray-800 mt-5 bg-gradient-to-r from-white from-30% via-black via-40% to-black">
-        <div className="mx-auto container grid md:grid-cols-bb">
-          <div className="px-4 py-10 bg-white" style={{colorScheme: "light"}}>
+      <div className="text-gray-800 mt-5 bg-white border-t-[1px] border-zinc-800">
+        <div className="mx-auto container grid lg:grid-cols-bb">
+          <div className="px-4 py-10 bg-white" style={{ colorScheme: "light" }}>
             {posts.map((post) => {
-              return (
-                <>
-                  <div
-                    title={post.title}
-                    onClick={() => (window.location.href = post.url)}
-                    className="px-0 rounded-2xl grid grid-cols-1 lg:grid-cols-aa justify-items-center lg:justify-items-start cursor-pointer hover:bg-[#ffffff20]"
-                  >
-                    <img
-                      src={post.image}
-                      className="rounded-xl bg-white mb-10 block shadow-lg shadow-[#55555580]"
-                      style={{
-                        width: "150px",
-                        height: "150px",
-                        // maxWidth: 400,
-                      }}
-                    />
-
-                    <div>
-                      <h2
-                        className="text-4xl font-bold mb-2"
-                        style={{
-                          textShadow: "2px 2px 0px #00000050f",
-                        }}
-                      >
-                        <a href={post.url}>{post.title}</a>
-                      </h2>
-                      <div className="uppercase tracking-wide text-gray-400">
-                        {post.date}
-                      </div>
-                      <div
-                        className="mt-6 max-w-[600px] h-[82px] overflow-hidden font-light text-lg"
-                        style={{
-                          textOverflow: "fade",
-                        }}
-                      >
-                        {post.tags.map(x => {
-                          return <a href={x} className="text-sm p-2 bg-gray-200 text-black rounded-xl mr-2">{x}</a>
-                        })}
-                      </div>
-                    </div>
-                  </div>
-
-                  {renderPost(post)}
-                </>
-              );
+              return <PostComponent post={post} key={post.slug} />
             })}
           </div>
-          <div className="px-2 relative top-[0px] bg-gradient-to-r from-[#4D3575] to-black" style={{boxShadow2: `5px 0px 10px #000 inset`, back2ground: "url(https://images.hdqwalls.com/wallpapers/dark-abstract-blur-4k-on.jpg) no-repeat", backgroundSize: "cover"}}>
-            <div className={"py-4 pl-4 sidebar text-purple-100 text-sm"}>
-            <h3 className="font-medium border-b-0 border-gray-200 mb-2 bg-[#00000040] p-2 rounded-md">
-                My projects
-              </h3>
-              <a href="https://github.com/fikisipi/elkai">
-                <Ico h="https://github.com/fluidicon.png" />
-                elkai - a TSP solver {/*<small>a travelling salesman solver</small>*/}
-              </a>
-              <a href="https://twitter.com/mkrobot/status/1165955815389433856">
-              <Ico h="https://github.com/fluidicon.png" />
-                vkh - video feed car tracking
-              </a>
-              <h3 className="mt-2 font-medium border-b-0 border-gray-200 mb-2 bg-[#00000040] p-2 rounded-md">
-                Blogs/sites I like
-              </h3>
-              <a href="https://metaculus.com">
-                <Ico h="https://d3s0w6fek99l5b.cloudfront.net/static/icon128.b1632c72a01c.png" />
-                Metaculus
-              </a>
-              <a href="https://theoatmeal.com">
-                <Ico h="https://s3.amazonaws.com/theoatmeal-img/favicons/favicon-96x96.png" />
-                The Oatmeal
-              </a>
-              <a href="https://gwern.net">
-                <Ico h="https://www.gwern.net/static/img/logo/logo-favicon-small.png" />
-                gwern.net
-              </a>
-              <a href="https://xkcd.com">
-                <Ico h="https://xkcd.com/s/919f27.ico" />
-                xkcd.com
-              </a>
-              <a href="https://news.ycombinator.com/news">
-                <Ico h="https://news.ycombinator.com/favicon.ico" />
-                Hacker News
-              </a>
-              <a href="https://astralcodexten.substack.com/">
-                <Ico h="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F8c00a032-defa-44b7-9ab7-b7cc6d88db75%2Ffavicon-32x32.png" />
-                AstralCodexTen (SSC)
-              </a>
-              <a href="https://scottaaronson.blog/">
-                <Ico h="https://149663533.v2.pressablecdn.com/wp-content/uploads/2021/10/cropped-Jacket-192x192.gif" />
-                Shtetl-Optimized
-              </a>
-              <a href="https://www.youtube.com/c/georgehotzarchive">
-                <Ico h="https://www.youtube.com/s/desktop/f06ee14b/img/favicon_48x48.png" />
-                George Hotz hacking vlogs
-              </a>
-              <a href="https://www.youtube.com/user/jblow888/videos">
-                <Ico h="https://www.youtube.com/s/desktop/f06ee14b/img/favicon_48x48.png" />
-                Jonathan Blow
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        
-        <div className="bg-white py-10 pb-20 text-black hidden">
-          <div className="px-8 mx-auto container grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 relative top-[-100px]">
-            {posts.map((post) => {
-              return (
-                <div
-                  onClick={() => (window.location.href = post.url)}
-                  title={post.title}
-                  className="cursor-pointer rounded-2xl p-4 bg-white hover:bg-gray-200"
-                  style={{
-                    boxShadow: `0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.09)`,
-                  }}
-                >
-                  <a href={post.url}>
-                    <img
-                      src={post.image}
-                      className="rounded-xl block mx-auto"
-                      style={{
-                        width: "100%",
-                        maxWidth: 400,
-                      }}
-                    />
-                    <h2 className="uppercase tracking-wide font-regular text-gray-500 mt-4 text-sm">
-                      {post.time} minute read
-                    </h2>
-                    <h1 className="text-indigo-800 my-4 text-xl font-semibold">
-                      {post.title}
-                    </h1>
-                  </a>
-                  <a href={post.url}>{post.desc}</a>
-                </div>
-              );
-            })}
-          </div>
+          <Sidebar/>
         </div>
       </div>
     </>
