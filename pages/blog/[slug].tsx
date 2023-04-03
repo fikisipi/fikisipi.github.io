@@ -1,5 +1,10 @@
 import { useRouter } from "next/router";
-import { parsePost, getAllSlugs, Post, getPreviousPost } from "@/components/postApi";
+import {
+  parsePost,
+  getAllSlugs,
+  Post,
+  getPreviousPost,
+} from "@/components/postApi";
 import { PostComponent } from "@/components/post";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Sidebar } from "../_document";

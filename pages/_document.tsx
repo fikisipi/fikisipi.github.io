@@ -1,13 +1,10 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import { useEffect, useState } from "react";
 
-
-
-
-import {Footer} from "@/components/footer"
-import {Header} from "@/components/header"
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 import { Sidebar } from "@/components/sidebar";
-export {Header, Footer, Sidebar}
+export { Header, Footer, Sidebar };
 
 export default function Document() {
   return (

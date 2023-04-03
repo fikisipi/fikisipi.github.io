@@ -8,6 +8,5 @@ dist
 public/google*.html
 public/blog
 .next
-posts/*.md
+_posts/*.md
 out
-posts
