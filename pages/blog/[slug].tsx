@@ -33,21 +33,7 @@ export const getStaticProps: GetStaticProps<{post?: Post, prevPost?: Post}, {slu
 }
 
 export default function PostPage (props: {post: Post, prevPost?: Post})  {
-//   const router = useRouter()
-//   const { slug } = router.query
-//   if(!slug || Array.isArray(slug)) return <div>Not found</div>
-
     const {prevPost} = props;
-
-    let [code, setCode] = useState<any>(null);
-    useEffect(() => {
-        window.commenzeHostname = "fikisipi.github.io-UrrYnxn";
-        window.commenzeThemeName = "Default Theme"
-      setCode(<script src="https://app.commenze.com/embed/comment-section/embedScript.js"></script>);
-      setTimeout(() => {
-        document.dispatchEvent(new Event("load"))
-      }, 1500)
-    }, [code == null, typeof window])
 
     return <>
     <Head>
@@ -68,7 +54,6 @@ export default function PostPage (props: {post: Post, prevPost?: Post})  {
             <Sidebar/>
         </div>
     </div>
-    {code}
   </>
   return <div>{JSON.stringify(props)}</div>
 //   let post = parsePostFile(slug);

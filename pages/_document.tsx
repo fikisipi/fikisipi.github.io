@@ -213,7 +213,6 @@ export default function Document() {
   return (
     <Html lang="en">{"\n"}
       <Head>{"\n"}
-      <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
       </Head>{"\n"}
       <body>{"\n"}
         <div className={`min-h-[100vh] text-white `}>

@@ -25,13 +25,6 @@ export function PostComponent(props: {post: Post, prevPost?: Post, renderContent
     <div id="commenze_commentSection"></div>
     <div className="commentbox"></div></>
   }
-  if(false && props.prevPost) {
-    footer = <>
-      <div className="mt-10 pt-4 border-t-2 border-dashed border-zinc-300">
-      <a href={props.prevPost.url} className="text-sm">&laquo; {props.prevPost.title}</a>
-      </div>
-    </>
-  }
 
   if(props.renderContent === false) {
     return <div className="pb-10 px-4">
@@ -103,7 +96,10 @@ export function PostComponent(props: {post: Post, prevPost?: Post, renderContent
           </div>
         </div>
       </div>
-      {props.renderContent === false ? null : renderMarkdown(post)}
+      {
+        /* @ts-ignore */
+      props.renderContent !== false ? renderMarkdown(post) : null
+      }
       {footer}
     </>
   );
