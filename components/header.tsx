@@ -26,7 +26,7 @@ export function Header() {
               }}
               className="relative left-[50px]"
             >
-              <img src={"/logo2.svg "} className="h-[35px]" />
+              <img src={"/logo2.svg "} className="h-[35px] pointer-events-none" alt="fikisipi" />
             </a>
           </div>
           <div className="flex justify-end">

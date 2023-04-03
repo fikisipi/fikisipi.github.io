@@ -56,7 +56,7 @@ export function PostComponent(props: {
                   <a
                     href={"#"}
                     key={x}
-                    className="hover:bg-gray-300 text-sm px-2 py-[4px] text-zinc-400 md:border-[1px] border-2 border-[#ffffff28] font-regular text-black rounded-xl mr-2"
+                    className="hover:ring-2 ring-indigo-500 text-sm px-2 py-[4px] text-zinc-400 md:border-[1px] border-2 border-[#ffffff28] font-regular text-black rounded-xl mr-2"
                   >
                     {x}
                   </a>
@@ -113,7 +113,7 @@ export function PostComponent(props: {
                 <a
                   href={"#"}
                   key={x}
-                  className="hover:text-blue-500 text-sm px-2 py-[4px] text-zinc-500 bfg-gray-200 md:border-[1px] border-2 border-zinc-300 font-regular text-black rounded-xl mr-2"
+                  className="hover:text-indigo-500 hover:border-indigo-500 text-sm px-2 py-[4px] text-zinc-500 bfg-gray-200 md:border-[1px] border-2 border-zinc-300 font-regular text-black rounded-xl mr-2"
                 >
                   {x}
                 </a>

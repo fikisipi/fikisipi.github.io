@@ -16,6 +16,9 @@ body {
   display: block;
   font-weight: 500;
 }
+.sidebar a:hover {
+  background: #99999930;
+}
 .sidebar h3 {
   margin-top: 20px;
   font-weight: 400;
