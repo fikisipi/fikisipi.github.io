@@ -6,7 +6,6 @@ import * as marked from "marked";
 
 export function PostComponent(props: {post: Post, renderContent?: boolean, renderTitle?: boolean}) {
   const {post} = props;
-
   return (
     <>
       <div

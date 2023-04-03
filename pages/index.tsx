@@ -61,10 +61,6 @@ export default function A(props: any) {
   let posts: Post[] = props.posts;
   let firstPost = posts[0];
 
-  posts.map((x) => {
-    x.url += "/";
-  });
-
   return (
     <>
     <Head>
