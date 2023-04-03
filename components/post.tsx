@@ -56,7 +56,7 @@ export function PostComponent(props: {
                   <a
                     href={"#"}
                     key={x}
-                    className="text-sm px-2 py-[4px] text-zinc-400 bfg-gray-200 md:border-[1px] border-2 border-[#ffffff28] font-regular text-black rounded-xl mr-2"
+                    className="hover:bg-gray-300 text-sm px-2 py-[4px] text-zinc-400 md:border-[1px] border-2 border-[#ffffff28] font-regular text-black rounded-xl mr-2"
                   >
                     {x}
                   </a>
@@ -70,7 +70,7 @@ export function PostComponent(props: {
   }
   return (
     <>
-      <div
+      <article
         title={post.title}
         className={
           "px-0 rounded-2xl flex gap-4 <md:items-center mb-6 " +
@@ -84,7 +84,7 @@ export function PostComponent(props: {
 
         <div className="flex flex-col gap-2 h-full">
           <h2
-            className="text-4xl font-bold"
+            className="text-4xl font-bold text-gray-800 hover:text-gray-600"
             style={{
               textShadow: "2px 2px 0px #00000050f",
             }}
@@ -113,7 +113,7 @@ export function PostComponent(props: {
                 <a
                   href={"#"}
                   key={x}
-                  className="text-sm px-2 py-[4px] text-zinc-500 bfg-gray-200 md:border-[1px] border-2 border-zinc-300 font-regular text-black rounded-xl mr-2"
+                  className="hover:text-blue-500 text-sm px-2 py-[4px] text-zinc-500 bfg-gray-200 md:border-[1px] border-2 border-zinc-300 font-regular text-black rounded-xl mr-2"
                 >
                   {x}
                 </a>
@@ -121,7 +121,7 @@ export function PostComponent(props: {
             })}
           </div>
         </div>
-      </div>
+      </article>
       {
         /* @ts-ignore */
         props.renderContent !== false ? renderMarkdown(post) : null
