@@ -1,2 +1,4 @@
 User-agent: *
 Disallow: /not-really-anything/
+Disallow: /cv
+Disallow: /cv.pdf
