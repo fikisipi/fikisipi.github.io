@@ -1,9 +1,9 @@
 let blog: any[] = [];
 import { type Post } from "@/components/postApi";
 import { postOutLink, domainName } from "@/components/const";
-import { Roboto } from "next/font/google";
+// import { Roboto } from "next/font/google";
 
-const R = Roboto({ weight: ["300", "400"], subsets: ["latin"] });
+// const R = Roboto({ weight: ["300", "400"], subsets: ["latin"] });
 
 //@ts-ignore
 import * as marked from "marked";
@@ -43,58 +43,22 @@ export function PostComponent(props: {
     footer = <></>;
   }
 
-  if (props.renderContent === false) {
-    return (
-      <div className="pb-10 px-4">
-        <div className="grid lg:grid-cols-singlePost justify-items-center lg:justify-items-start">
-          <img
-            src={post.imageLinks!.wide}
-            className="block w-full max-w-[400px] rounded-xl"
-          />
-          <div className="text-center pt-4">
-            <h1 className="text-3xl font-bold mt-4">{props.post.title}</h1>
-            <div className="my-2">
-              <div className="uppercase mb-2 tracking-wide text-gray-400 h-[25px]">
-                {post.date}
-              </div>
-
-              {post.tags.map((x) => {
-                return (
-                  <a
-                    href={"/tag/" + x}
-                    key={x}
-                    className="hover:ring-2 ring-indigo-500 text-sm px-2 py-[4px] text-zinc-400 md:border-[1px] border-2 border-[#ffffff28] font-regular text-black rounded-xl mr-2"
-                  >
-                    {x}
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
   return (
     <>
       <article
         title={post.title}
         className={
-          "px-0 rounded-t-lg flexx gap-4 <md:items-center " +
+          "px-0 md:rounded-t-lg flexx gap-4 <md:items-center border-[1px] border-zinc-800 " +
           (props.renderTitle === false ? "hidden" : "")
         }
         style={{
           background: `url(${post.imageLinks?.wide}) no-repeat`,
           backgroundSize: "contain",
           backgroundPositionX: "100%",
+          backgroundColor: "#0f0f0f"
         }}
       >
-        {/* <img
-          src={post.imageLinks!.square}
-          className="w-[100px] h-[100px] md:w-[150px] md:h-[150px] rounded-xl bg-white block sshadow-lg shadow-[#55555580]"
-        /> */}
-
-        <div className="flex lg:pl-4 flex-col gap-2 h-full p-4 rounded-t-lg bg-gradient-to-r from-[#0d0d0d] from-[80%] to-[#0d0d0d]/[0.1]">
+        <div className="flex lg:pl-4 flex-col gap-2 h-full p-4 md:rounded-t-lg bg-gradient-to-r from-[#0f0f0f] from-[60%] to-[#0f0f0f]/[0.1]">
           <h2
             className={
               "text-3xl font-bold text-zinc-300 hover:text-zinc-400 " +
@@ -139,7 +103,7 @@ export function PostComponent(props: {
           </div>
         </div>
       </article>
-      <div className="bg-white p-4 rounded-b-lg mb-8 lg:p-4">
+      <div className="bg-white p-4 md:rounded-b-lg mb-8 lg:p-4">
         {renderMarkdown(post)}
         <div className="mt-6 relative">
           <Share post={post} />
@@ -161,7 +125,7 @@ export function renderMarkdown(post: Post) {
       dangerouslySetInnerHTML={{
         __html: marked.parse(post.markdown),
       }}
-      className={"ppost " + R.className}
+      className={"ppost"}
     />
   );
 }

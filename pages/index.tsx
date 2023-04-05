@@ -135,7 +135,7 @@ export default function A(props: StaticProps) {
       </div>
       <Container>
         <div
-          className="px-4 py-4 bgf-zinc-800"
+          className="pt-4"
           style={{ colorScheme: "light" }}
         >
           {props.extraTitle ? (

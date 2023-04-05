@@ -75,7 +75,7 @@ function resizeImages() {
       resizeImage({
         inputFile: `${imageSourceDir}/${file}`,
         outputFile: wd,
-        width: 350,
+        width: 500,
         height: 150,
         blur: 5,
       }).then((x) => {
@@ -161,6 +161,16 @@ function resizeImage({
               input: resizedBuffer,
               gravity: "center",
             },
+            {
+              input: Buffer.from([0,0,0,128]),
+              raw: {
+                width: 1,
+                height: 1,
+                channels: 4,
+              },
+              tile: true,
+              blend: 'dest-in',
+            }
           ])
           .toFile(outputFile)
           .then((info) => {

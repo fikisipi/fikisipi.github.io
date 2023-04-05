@@ -63,7 +63,7 @@ export default function PostPage(props: {
       </div> */}
       <Container style={{ borderTopWidth: 0 }}>
         <div
-          className="px-4 pt-8 pb-10 text-black"
+          className="text-black pt-2"
           style={{ colorScheme: "light" }}
         >
           <PostComponent post={props.post} {...{ prevPost }} />
