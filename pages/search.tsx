@@ -42,9 +42,13 @@ export default function Search(props: { allPosts: Post[] }) {
             role="alert"
           >
             <span className="font-regular ml-2 mr-2 text-left flex-auto">
-              {post!.title} <small className="mx-4 align-middle inline-block text-xs text-indigo-300">{post!.date}</small>
+              {post!.title}{" "}
+              <small className="mx-4 align-middle inline-block text-xs text-indigo-300">
+                {post!.date}
+              </small>
             </span>
-            <span className="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-regular mr-0">{post?.tags}
+            <span className="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-regular mr-0">
+              {post?.tags}
             </span>
           </a>
         </div>
@@ -53,12 +57,12 @@ export default function Search(props: { allPosts: Post[] }) {
     if (R.length === 0) {
       R = (
         <div className="text-center">
-        <div
-          className="p-4 mb-4 text-sm text-red-300 rounded-lg bg-red-900 inline-block"
-          role="alert"
-        >
-          <span className="font-medium">Sorry!</span> No results were found.
-        </div>
+          <div
+            className="p-4 mb-4 text-sm text-red-300 rounded-lg bg-red-900 inline-block"
+            role="alert"
+          >
+            <span className="font-medium">Sorry!</span> No results were found.
+          </div>
         </div>
       );
     } else {
@@ -119,8 +123,9 @@ export default function Search(props: { allPosts: Post[] }) {
       </div>
     );
   }
-  return <div className="mt-10 text-center">
-          <div role="status">
+  return (
+    <div className="mt-10 text-center">
+      <div role="status">
         <svg
           aria-hidden="true"
           className="w-8 h-8 mr-2 text-gray-400 animate-spin inline-block fill-blue-600"
@@ -139,5 +144,6 @@ export default function Search(props: { allPosts: Post[] }) {
         </svg>
         <span className="sr-onlyf">Loading...</span>
       </div>
-  </div>
+    </div>
+  );
 }
