@@ -19,6 +19,7 @@ export default function Search(props: { allPosts: Post[] }) {
     if (typeof router.query.q == "string") {
       //@ts-ignore
       qq.value = router.query.q;
+      //@ts-ignore
       headerSearch.value = router.query.q;
     }
   }, [router.query]);
