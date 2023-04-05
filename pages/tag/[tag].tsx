@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps<StaticProps, ParamType> =
     return {
       props: {
         posts,
-        extraTitle: `All posts tagged as "${x.params?.tag}"`,
+        extraTitle: `🔍 All posts tagged as "${x.params?.tag}"`,
         allTags: getAllTags(),
       },
     };
