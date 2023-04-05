@@ -2,7 +2,7 @@
 import type { GetStaticProps } from "next";
 import { Inter } from "next/font/google";
 import { getAllTags, getPosts, Post } from "@/components/postApi";
-import { PostComponent, PostComponent2 } from "@/components/post";
+import { PostComponent } from "@/components/post";
 import { Sidebar } from "./_document";
 import Head from "next/head";
 
