@@ -8,13 +8,17 @@ import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export type StaticProps = {posts: Post[], extraTitle?: string, allTags?: string[]}
+export type StaticProps = {
+  posts: Post[];
+  extraTitle?: string;
+  allTags?: string[];
+};
 
 export const getStaticProps: GetStaticProps<StaticProps> = async function () {
   return {
     props: {
       posts: getPosts(),
-      allTags: getAllTags()
+      allTags: getAllTags(),
     },
   };
 };
@@ -131,7 +135,11 @@ export default function A(props: StaticProps) {
       <div className="text-gray-800 mt-5 bg-white lg:bg-gradient-to-r from-white from-[40%] to-zinc-200 border-t-[1px] border-zinc-800">
         <div className="mx-auto container grid lg:grid-cols-bb">
           <div className="px-4 py-10 bg-white" style={{ colorScheme: "light" }}>
-            {props.extraTitle ? <h3 className="text-2xl font-light mb-10 border-b-2 border-zinc-300 text-zinc-500">{props.extraTitle}</h3> : null}
+            {props.extraTitle ? (
+              <h3 className="text-2xl font-light mb-10 border-b-2 border-zinc-300 text-zinc-500">
+                {props.extraTitle}
+              </h3>
+            ) : null}
             {posts.map((post) => {
               return (
                 <div className="mb-10" key={post.slug}>
@@ -140,7 +148,7 @@ export default function A(props: StaticProps) {
               );
             })}
           </div>
-          <Sidebar allTags={props.allTags}/>
+          <Sidebar allTags={props.allTags} />
         </div>
       </div>
     </>

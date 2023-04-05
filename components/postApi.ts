@@ -1,8 +1,8 @@
 import { parse } from "yaml";
 import Sharp from "sharp";
-import fs from "fs"
-import path from "path"
-import {globSync} from "glob"
+import fs from "fs";
+import path from "path";
+import { globSync } from "glob";
 
 export type Post = {
   title: string;
@@ -16,7 +16,13 @@ export type Post = {
   slug?: string;
 };
 
-import { postSourceDir, imageSourceDir, imageOutDir, imageOutLink, postOutLink } from "./const";
+import {
+  postSourceDir,
+  imageSourceDir,
+  imageOutDir,
+  imageOutLink,
+  postOutLink,
+} from "./const";
 
 function pathToSlug(fpath: string) {
   return path.basename(fpath).replace(".md", "");
@@ -26,10 +32,11 @@ export function getPosts(tags?: string[]) {
   resizeImages();
   let output: Post[] = [];
   globSync(`${postSourceDir}/*.md`, {}).forEach((filePath: string) => {
-    const slug = pathToSlug(filePath)
+    const slug = pathToSlug(filePath);
     let post = parsePost(slug);
     if (post === null) return;
-    if(tags && tags.length > 0 && !tags.some((x) => post!.tags.includes(x))) return;
+    if (tags && tags.length > 0 && !tags.some((x) => post!.tags.includes(x)))
+      return;
     output.push(post);
   });
   output.sort((a, b) => b.slug!.localeCompare(a.slug!));
@@ -85,18 +92,20 @@ export function parsePost(slug: string): Post | null {
 
   let content = fs.readFileSync(`${postSourceDir}/${file}`, "utf8").toString();
   let conf = parse(content.split("---")[0]) as Post;
-  if(!conf.image) {
+  if (!conf.image) {
     conf.image = "default.png";
   }
-  if(!conf.title) {
-    conf.title = "Untitled post"
+  if (!conf.title) {
+    conf.title = "Untitled post";
   }
-  if(!conf.tags) {
-    conf.tags = []
+  if (!conf.tags) {
+    conf.tags = [];
   }
-  if(!conf.date) {
+  if (!conf.date) {
     let T = fs.statSync(`${postSourceDir}/${file}`).ctime;
-    conf.date = `${T.getDate()} ${T.toLocaleDateString("en-us", {month: "short"})} ${T.getFullYear()}`
+    conf.date = `${T.getDate()} ${T.toLocaleDateString("en-us", {
+      month: "short",
+    })} ${T.getFullYear()}`;
   }
   conf.imageLinks = {
     square: `${imageOutLink}/${conf.image}.square.png`,

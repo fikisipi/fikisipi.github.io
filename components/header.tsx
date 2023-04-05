@@ -37,6 +37,7 @@ export function Header() {
             <form className="relative" action="/search">
               <input
                 name="q"
+                id="headerSearch"
                 placeholder="Search"
                 className="w-[140px] focus:ring-[#8858db] max-[400px]:w-[100px] md:w-[180px] text-white outline-none placeholder-[#888] border-2 md:border-[1px] border-[#66666680] ring-2 ring-[#000]/[0.5] px-2 pl-7 bg-[#00000050] py-1 rounded-xl"
               />

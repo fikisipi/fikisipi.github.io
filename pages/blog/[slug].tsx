@@ -20,7 +20,8 @@ export const getStaticPaths: GetStaticPaths = async function () {
   };
 };
 
-export const getStaticProps: GetStaticProps<Partial<StaticProps>,
+export const getStaticProps: GetStaticProps<
+  Partial<StaticProps>,
   { slug: string }
 > = async function (c) {
   if (!c.params || !c.params.slug) {
@@ -32,15 +33,19 @@ export const getStaticProps: GetStaticProps<Partial<StaticProps>,
   if (!post) {
     return { redirect: "/", props: {} };
   }
-  const prev: { prevPost?: Post, allTags?: string[] } = {};
+  const prev: { prevPost?: Post; allTags?: string[] } = {};
   if (prevPost != null) {
     prev.prevPost = prevPost;
   }
-  prev.allTags = getAllTags()
+  prev.allTags = getAllTags();
   return { props: { post, ...prev } };
 };
 
-export default function PostPage(props: { post: Post; prevPost?: Post, allTags?: string[] }) {
+export default function PostPage(props: {
+  post: Post;
+  prevPost?: Post;
+  allTags?: string[];
+}) {
   const { prevPost } = props;
 
   return (
