@@ -18,7 +18,13 @@ body {
 }
 .sidebar a {
   display: block;
-  font-weight: 500;
+  /* box-shadow: inset px 0px 10px #000; */
+  font-weight: 400;
+  /* border: 1px solid #333; */
+  /* background: #00000030; */
+  /* padding: 0 12px; */
+  margin-bottom: 5px;
+  /* border-radius: 10px; */
 }
 .fb-like {
   z-index: 10;

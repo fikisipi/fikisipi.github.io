@@ -2,7 +2,7 @@ let social: any[];
 
 export function Footer() {
   return (
-    <footer className="">
+    <footer className="border-t-[1px] border-[#ffffff20]">
       <div className="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
         <div className="mt-8 flex justify-center space-x-6 text-indigo-200">
           <a className="px-3" href="#">

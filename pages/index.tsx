@@ -5,6 +5,7 @@ import { getAllTags, getPosts, Post } from "@/components/postApi";
 import { PostComponent } from "@/components/post";
 import { Sidebar } from "./_document";
 import Head from "next/head";
+import { Container } from "@/components/container";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -77,7 +78,7 @@ export default function A(props: StaticProps) {
       </Head>{" "}
       <div
         className={
-          "container px-4 mx-auto mt-6 text-center text-lg font-light text-gray-400 " +
+          "container px-4 mx-auto my-6 text-center text-lg font-light text-gray-400 " +
           inter.className
         }
       >
@@ -132,25 +133,28 @@ export default function A(props: StaticProps) {
           </a>
         </div>
       </div>
-      <div className="text-gray-800 mt-5 bg-white lg:bg-gradient-to-r from-white from-[40%] to-zinc-200 border-t-[1px] border-zinc-800">
-        <div className="mx-auto container grid lg:grid-cols-bb">
-          <div className="px-4 py-10 bg-white" style={{ colorScheme: "light" }}>
-            {props.extraTitle ? (
-              <h3 className="text-2xl font-light mb-10 border-b-2 border-zinc-300 text-zinc-500">
-                {props.extraTitle}
-              </h3>
-            ) : null}
-            {posts.map((post) => {
-              return (
-                <div className="mb-10" key={post.slug}>
-                  <PostComponent post={post} />
-                </div>
-              );
-            })}
-          </div>
-          <Sidebar allTags={props.allTags} />
+      <Container>
+        <div
+          className="px-4 py-4 bgf-zinc-800"
+          style={{ colorScheme: "light" }}
+        >
+          {props.extraTitle ? (
+            <h3 className="text-2xl font-light mb-10 border-b-2 border-zinc-300 text-zinc-500">
+              {props.extraTitle}
+            </h3>
+          ) : null}
+          {posts.map((post) => {
+            return (
+              // <div className="bg-zinc-800 p-4">
+              // <div className="mb-10 p-10 bg-white shadow-xl shadow-black/[0.9]" key={post.slug} style={{boxShado2w: `inset 0px 0px 20px #000`}}>
+              <PostComponent key={post.slug} post={post} />
+              // </div>
+              // </div>
+            );
+          })}
         </div>
-      </div>
+        <Sidebar allTags={props.allTags} />
+      </Container>
     </>
   );
 }

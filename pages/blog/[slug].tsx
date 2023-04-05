@@ -8,10 +8,11 @@ import {
 } from "@/components/postApi";
 import { PostComponent } from "@/components/post";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Sidebar } from "../_document";
+import { Sidebar } from "@/components/sidebar";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { StaticProps } from "..";
+import { Container } from "@/components/container";
 
 export const getStaticPaths: GetStaticPaths = async function () {
   return {
@@ -57,24 +58,18 @@ export default function PostPage(props: {
         <meta content={props.post.desc} name="description" />
         <meta content={props.post.desc} name="og:description" />
       </Head>
-      <div className="container mx-auto mt-5 lgx:w-[900px]">
-        <PostComponent post={props.post} renderContent={false} />
-      </div>
-      <div className="text-gray-800 bg-white lg:bg-gradient-to-r from-white from-[40%] to-zinc-200 border-t-[1px] border-zinc-800">
-        <div className="mx-auto container grid lg:grid-cols-bb">
-          <div
-            className="px-4 py-10 bg-white text-black"
-            style={{ colorScheme: "light" }}
-          >
-            <PostComponent
-              post={props.post}
-              renderTitle={false}
-              {...{ prevPost }}
-            />
-          </div>
-          <Sidebar allTags={props.allTags} />
+      {/* <div className="container mx-auto mt-0 lgx:w-[900px]">
+      <h1 className="text-3xl font-bold py-0 text-center">{props.post.title}</h1>
+      </div> */}
+      <Container style={{ borderTopWidth: 0 }}>
+        <div
+          className="px-4 pt-8 pb-10 text-black"
+          style={{ colorScheme: "light" }}
+        >
+          <PostComponent post={props.post} {...{ prevPost }} />
         </div>
-      </div>
+        <Sidebar allTags={props.allTags} />
+      </Container>
     </>
   );
   return <div>{JSON.stringify(props)}</div>;

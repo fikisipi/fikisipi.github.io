@@ -13,12 +13,12 @@ export function Sidebar(props: { allTags?: string[] }) {
     // <div className="lg:bg-gradient-to-r from-white/[0] from-[95%] via-black/[0.07] via-[95%] to-white/[0] pr-4">
     // <div>
     <aside
-      className="relative top-[0px] lg:border-l-[1px] border-zinc-200 !text-zinc-600"
+      className="relative top-[0px] lg:border-l-[1px] border-zinc-900 !text-zinc-300 p-4"
       style={{
         backgroundSize: "cover",
       }}
     >
-      <div className={"py-4 pl-4 sidebar text-sm"}>
+      <div className={"py-4 pl-4 sidebar text-sm pt-0"}>
         <h3 className="font-medium border-b-0 border-gray-200 mb-2 rounded-l-md">
           Me elsewhere
         </h3>

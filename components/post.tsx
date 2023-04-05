@@ -16,6 +16,7 @@ export function PostComponent(props: {
   renderContent?: boolean;
   renderTitle?: boolean;
   footer?: boolean;
+  hideTitle?: boolean;
 }) {
   const { post } = props;
 
@@ -39,10 +40,7 @@ export function PostComponent(props: {
     props.renderContent !== false && props.renderTitle === false;
   let footer = <></>;
   if (singlePage) {
-    footer = (
-      <>
-      </>
-    );
+    footer = <></>;
   }
 
   if (props.renderContent === false) {
@@ -82,21 +80,31 @@ export function PostComponent(props: {
       <article
         title={post.title}
         className={
-          "px-0 rounded-2xl flex gap-4 <md:items-center mb-6 " +
+          "px-0 rounded-t-lg flexx gap-4 <md:items-center " +
           (props.renderTitle === false ? "hidden" : "")
         }
+        style={{
+          background: `url(${post.imageLinks?.wide}) no-repeat`,
+          backgroundSize: "contain",
+          backgroundPositionX: "100%",
+        }}
       >
-        <img
+        {/* <img
           src={post.imageLinks!.square}
           className="w-[100px] h-[100px] md:w-[150px] md:h-[150px] rounded-xl bg-white block sshadow-lg shadow-[#55555580]"
-        />
+        /> */}
 
-        <div className="flex flex-col gap-2 h-full">
+        <div className="flex lg:pl-4 flex-col gap-2 h-full p-4 rounded-t-lg bg-gradient-to-r from-[#0d0d0d] from-[80%] to-[#0d0d0d]/[0.1]">
           <h2
-            className="text-3xl font-bold text-gray-800 hover:text-gray-600"
-            style={{
-              // textShadow: "2px 2px 0px #00000050f",
-            }}
+            className={
+              "text-3xl font-bold text-zinc-300 hover:text-zinc-400 " +
+              (props.hideTitle === true ? "hidden" : "")
+            }
+            style={
+              {
+                // textShadow: "2px 2px 0px #00000050f",
+              }
+            }
           >
             <a
               href={post.url}
@@ -108,7 +116,7 @@ export function PostComponent(props: {
               {post.title}
             </a>
           </h2>
-          <div className="uppercase tracking-wide text-gray-400 h-[25px]">
+          <div className="uppercase tracking-wide text-zinc-400 h-[25px]">
             {post.date}
           </div>
           <div
@@ -122,7 +130,7 @@ export function PostComponent(props: {
                 <a
                   href={"/tag/" + x}
                   key={x}
-                  className="hover:text-zinc-400 text-xs px-[5px] py-[6px] text-zinc-500 bfg-gray-200 md:border-[1px] border-2 border-zinc-300 font-regular text-zinc-600 rounded-[4px] mr-1"
+                  className="hover:text-zinc-400 text-xs px-[5px] py-[6px] text-zinc-500 bfg-gray-200 md:border-[1px] border-2 border-zinc-900 font-regular text-zinc-400 rounded-[4px] mr-1"
                 >
                   {x}
                 </a>
@@ -131,18 +139,16 @@ export function PostComponent(props: {
           </div>
         </div>
       </article>
-      {
-        /* @ts-ignore */
-        props.renderContent !== false ? renderMarkdown(post) : null
-      }
-      <div className="mt-6 relative">
+      <div className="bg-white p-4 rounded-b-lg mb-8 lg:p-4">
+        {renderMarkdown(post)}
+        <div className="mt-6 relative">
+          <Share post={post} />
 
-        <Share post={post} />
-
-        {/* <div className="inline-block align-top ml-2"> */}
+          {/* <div className="inline-block align-top ml-2"> */}
           {/* <div className="fb-share-button" data-href={`${domainName}${postOutLink}/${post.slug}`} data-layout="box_count" data-size=""></div> */}
           {/* <div className="inline-block left-0  bg-gradient-to-r from-zinc-300 via-white to-zinc-200 absolute z-2 w-[120px] h-[25px]" /> */}
-        {/* </div> */}
+          {/* </div> */}
+        </div>
       </div>
       {footer}
     </>
@@ -164,6 +170,7 @@ function Share(props: { post: Post }) {
   return (
     <>
       <a
+        key="hn"
         href={`https://news.ycombinator.com/submitlink?t=${encodeURIComponent(
           post.title
         )}&u=${encodeURIComponent(domainName + post.url)}`}
@@ -190,6 +197,7 @@ function Share(props: { post: Post }) {
         Share
       </a>{" "}
       <a
+        key="tw"
         href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
           post.title
         )}&url=${encodeURIComponent(domainName + post.url)}`}
@@ -212,4 +220,3 @@ function Share(props: { post: Post }) {
     </>
   );
 }
-
