@@ -13,7 +13,7 @@ export function Sidebar(props: { allTags?: string[] }) {
     // <div className="lg:bg-gradient-to-r from-white/[0] from-[95%] via-black/[0.07] via-[95%] to-white/[0] pr-4">
     // <div>
     <aside
-      className="relative top-[0px] lxg:border-l-[1px] border-zinc-900 !text-zinc-300 p-4"
+      className="relative top-[0px] lxg:border-l-[1px] border-zinc-900 !text-zinc-300 p-4 opacity-50"
       style={{
         backgroundSize: "cover",
       }}

@@ -94,7 +94,7 @@ export function PostComponent(props: {
                 <a
                   href={"/tag/" + x}
                   key={x}
-                  className="hover:text-zinc-400 text-xs px-[5px] py-[6px] text-zinc-400 bfg-gray-200 md:border-[1px] border-2 border-zinc-700 font-regular text-zinc-400 rounded-[4px] mr-1"
+                  className="hover:text-zinc-400 text-xs px-[5px] py-[6px] text-zinc-500 bfg-gray-200 border-[1px] border-zinc-800 font-regular text-zinc-400 rounded-[4px] mr-1"
                 >
                   {x}
                 </a>
@@ -125,7 +125,7 @@ export function renderMarkdown(post: Post) {
       dangerouslySetInnerHTML={{
         __html: marked.parse(post.markdown),
       }}
-      className={"ppost"}
+      className={"ppost text-base font-regular"}
     />
   );
 }
