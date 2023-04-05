@@ -62,10 +62,7 @@ export default function PostPage(props: {
       <h1 className="text-3xl font-bold py-0 text-center">{props.post.title}</h1>
       </div> */}
       <Container style={{ borderTopWidth: 0 }}>
-        <div
-          className="text-black pt-2"
-          style={{ colorScheme: "light" }}
-        >
+        <div className="text-black md:pt-2" style={{ colorScheme: "light" }}>
           <PostComponent post={props.post} {...{ prevPost }} />
         </div>
         <Sidebar allTags={props.allTags} />

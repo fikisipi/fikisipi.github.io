@@ -48,20 +48,20 @@ export function PostComponent(props: {
       <article
         title={post.title}
         className={
-          "px-0 md:rounded-t-lg flexx gap-4 <md:items-center border-[1px] border-zinc-800 " +
+          "px-0 md:rounded-t-lg flexx gap-4 <md:items-center md:border-[1px] md:border-zinc-800 " +
           (props.renderTitle === false ? "hidden" : "")
         }
         style={{
           background: `url(${post.imageLinks?.wide}) no-repeat`,
           backgroundSize: "contain",
           backgroundPositionX: "100%",
-          backgroundColor: "#0f0f0f"
+          backgroundColor: "#0f0f0f",
         }}
       >
         <div className="flex lg:pl-4 flex-col gap-2 h-full p-4 md:rounded-t-lg bg-gradient-to-r from-[#0f0f0f] from-[60%] to-[#0f0f0f]/[0.1]">
           <h2
             className={
-              "text-3xl font-bold text-zinc-300 hover:text-zinc-400 " +
+              "text-3xl font-bold text-white hover:text-zinc-300 " +
               (props.hideTitle === true ? "hidden" : "")
             }
             style={
@@ -94,7 +94,7 @@ export function PostComponent(props: {
                 <a
                   href={"/tag/" + x}
                   key={x}
-                  className="hover:text-zinc-400 text-xs px-[5px] py-[6px] text-zinc-500 bfg-gray-200 md:border-[1px] border-2 border-zinc-900 font-regular text-zinc-400 rounded-[4px] mr-1"
+                  className="hover:text-zinc-400 text-xs px-[5px] py-[6px] text-zinc-400 bfg-gray-200 md:border-[1px] border-2 border-zinc-700 font-regular text-zinc-400 rounded-[4px] mr-1"
                 >
                   {x}
                 </a>

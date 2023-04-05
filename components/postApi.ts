@@ -162,15 +162,15 @@ function resizeImage({
               gravity: "center",
             },
             {
-              input: Buffer.from([0,0,0,128]),
+              input: Buffer.from([0, 0, 0, 128]),
               raw: {
                 width: 1,
                 height: 1,
                 channels: 4,
               },
               tile: true,
-              blend: 'dest-in',
-            }
+              blend: "dest-in",
+            },
           ])
           .toFile(outputFile)
           .then((info) => {
