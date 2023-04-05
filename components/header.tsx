@@ -27,6 +27,7 @@ export function Header() {
           >
             <img
               src={"/logo2.svg"}
+              width="105"
               height="35"
               className="h-[35px] pointer-events-none"
               alt="fikisipi"
@@ -59,7 +60,7 @@ export function Header() {
                 </svg>
               </span>
             </form>
-            <a
+            {/* <a
               href=""
               className="ml-1 bg-blue-500 text-white rounded-xl py-1 px-2 font-light hidden"
             >
@@ -78,7 +79,7 @@ export function Header() {
                 />
               </svg>
               Contact
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

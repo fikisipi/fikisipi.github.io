@@ -1,7 +1,13 @@
+import Image from "next/image"
+
 function Ico(props: { h: string }) {
   return (
-    <img
+    <Image
       src={props.h}
+      alt=""
+      loading="lazy"
+      width={32}
+      height={32}
       className="border-0 border-gray-600 w-5 h-5 rounded-full inline-block relative fleft-[-25px] ftop-[5px] mr-2 my-2"
     />
   );

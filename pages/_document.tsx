@@ -15,6 +15,8 @@ export default function Document() {
         <div className="absolute z-1 left-0 top-0 right-0 overflow-hidden">
           <img
             src="/slopes.png"
+            width="1800"
+            height="608"
             className="animate-pulse"
             style={{
               // width: "auto",

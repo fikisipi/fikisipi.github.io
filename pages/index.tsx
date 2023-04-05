@@ -94,7 +94,7 @@ export default function A(props: StaticProps) {
         <div className="hidden md:block">
           I also care about building "user-first" stuff & product design.
         </div>
-        <div className="hidden text-sm mt-10 mb-10 tracking-wide font-normal flex flex-colx md:flex-row mx-auto justify-center">
+        {/* <div className="hidden text-sm mt-10 mb-10 tracking-wide font-normal flex flex-colx md:flex-row mx-auto justify-center">
           <a
             href=""
             className="block text-white mr-2 align-middle p-2 border-[1px] border-gray-600 rounded-xl"
@@ -131,7 +131,7 @@ export default function A(props: StaticProps) {
             </svg>
             GitHub
           </a>
-        </div>
+        </div> */}
       </div>
       <Container>
         <div className="pt-4" style={{ colorScheme: "light" }}>
