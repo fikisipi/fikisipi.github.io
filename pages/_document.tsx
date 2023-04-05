@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { useEffect, useState } from "react";
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -9,18 +8,16 @@ export { Header, Footer, Sidebar };
 export default function Document() {
   return (
     <Html lang="en">
-      {"\n"}
-      <Head>{"\n"}</Head>
-      {"\n"}
+      <Head>
+        <link rel="stylesheet" href="https://use.typekit.net/jvr1gjm.css" />
+      </Head>
       <body>
-        {"\n"}
         <div className={`min-h-[100vh] text-white `}>
           <Header />
           <Main />
           <Footer />
         </div>
         <NextScript />
-        {"\n"}
       </body>
     </Html>
   );

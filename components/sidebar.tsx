@@ -9,12 +9,12 @@ function Ico(props: { h: string }) {
 
 export function Sidebar(props: { allTags?: string[] }) {
   return (
+    // shadow sidebar:
+    // <div className="lg:bg-gradient-to-r from-white/[0] from-[95%] via-black/[0.07] via-[95%] to-white/[0] pr-4">
+    // <div>
     <aside
       className="relative top-[0px] lg:border-l-[1px] border-zinc-200 !text-zinc-600"
       style={{
-        // boxShadow2: `5px 0px 10px #000 inset`,
-        // back2ground:
-        //   "url(https://images.hdqwalls.com/wallpapers/dark-abstract-blur-4k-on.jpg) no-repeat",
         backgroundSize: "cover",
       }}
     >
@@ -44,6 +44,10 @@ export function Sidebar(props: { allTags?: string[] }) {
         <a href="https://polartask.com">
           <Ico h="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAADlQTFRFAAAAUFBQn5+fz8/P////T09P39/fgICAf39/sLCwr6+v4ODg8PDw0NDQEBAQoKCgYGBg7+/vMDAwQqu2ygAAALBJREFUeJzVkkESgyAMRaOkWkpD1PsftkQHQhC67fRvnPE9ICQA/Fum2SGimx8DvGDOMnX4inWeN+7R5vV1vWS15984oqkjWBbeUul4A4qR7BbccICY9mAVxEfPyiGmpjgV5H/yN+XSUjQCyXcz3Ar7cRo1rwQqBlScmltkI/P6FlcfLqNw08pQDOWhM4v9UG5nUaa5F85g074HD23si2jXn3XozEPvTYrC0jHiAf5ZPveFCLnbWGr3AAAAAElFTkSuQmCC" />
           PolarTask
+        </a>
+        <a href="/cv.pdf">
+          <Ico h="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAjRJREFUWEftV0GIqVEYPffNwoKVzczaXxbKwmI0iEwjpaxM08SCWUhKKRbohY28LckrK2VlMZpYsJMF0UzJwsJClNWjKFua5n/dW6NMzfymJ3rl2/33fp1z7vnPd+sSAD84jvvJ87wPwAUOU1NCyO/RaPSLcBwX5Xk+cRjebRZCSIzIZLI/Bzz5x3NOqQD+GKd/5zwJODlwcuD/cUClUkGv14MQgk6ng5eXFzbKt7e36PV6GI/HW9fJzc0Nlsslut3ul9fMTg74/X7c39+jWCzi9fUVdrsdj4+PyGazSKVSWK1WiEQiGyKRSITn52cEAgE0Go1/EyCXy1Eul2GxWDCZTBiYQqHA09MTNBoNlEol0uk0rq6usF6v2b7ZbEYikYBOp2OCvypBB7xeLyNyuVxbOA6HA/V6HfP5HM1mE7FYjH3TymQymM1mSCaTgre8oIB4PA6JRIJQKPQpWDgcxvn5OYLBIMRiMbP/7u4Og8FgPwIoKCX5rOhvKpVKUKvVzH6PxwOr1SpIThsEHfD5fLi8vMTDw8MWIM0EnYTFYsHWK5UKcrkcbDYbm5J8Pr8fATRwNPF0rKbTKQPlOA61Wo2FjGaAFs2IyWQCHVej0bhZF1Ih6AAFiEajMBgMKBQKODs7g9PpRLVaZSP4XlKpFO12G61WC263W4h3s7+TANp9fX0NrVaLt7c3RkKT/7Go/cPhEP1+f/8Cdkb8ZuPODnwTd+f2k4CTAycHjv80O/rj9NjP87+dXu/L6LNd8wAAAABJRU5ErkJggg==" />
+          My CV/Resume
         </a>
         <h3 className="font-medium border-b-0 border-gray-200 mb-2 rounded-l-md">
           Blogs/sites I like
@@ -102,5 +106,6 @@ export function Sidebar(props: { allTags?: string[] }) {
         </div>
       </div>
     </aside>
+    // </div>
   );
 }

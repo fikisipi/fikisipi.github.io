@@ -18,23 +18,22 @@ export function PostComponent(props: {
   footer?: boolean;
 }) {
   const { post } = props;
-  let [fbLike, setFbLike] = useState<any>(null);
-  let router = useRouter();
 
-  const loadScript = () => {
-    let script = document.createElement("script");
-    script.setAttribute("crossOrigin", "anonymous");
-    script.src =
-      "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0";
-    script.setAttribute("nonce", "o8EwTXDy");
-    script.type = "text/javascript";
-    document.body.append(script);
-    return () => script.remove();
-  };
+  // Was previously used for comments:
+  // const loadScript = () => {
+  //   let script = document.createElement("script");
+  //   script.setAttribute("crossOrigin", "anonymous");
+  //   script.src =
+  //     "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0";
+  //   script.setAttribute("nonce", "o8EwTXDy");
+  //   script.type = "text/javascript";
+  //   document.body.append(script);
+  //   return () => script.remove();
+  // };
 
-  useEffect(() => {
-    loadScript();
-  }, []);
+  // useEffect(() => {
+  //   loadScript();
+  // }, []);
 
   const singlePage =
     props.renderContent !== false && props.renderTitle === false;
@@ -42,8 +41,6 @@ export function PostComponent(props: {
   if (singlePage) {
     footer = (
       <>
-        <div id="commenze_commentSection"></div>
-        <div className="commentbox"></div>
       </>
     );
   }
@@ -98,7 +95,7 @@ export function PostComponent(props: {
           <h2
             className="text-3xl font-bold text-gray-800 hover:text-gray-600"
             style={{
-              textShadow: "2px 2px 0px #00000050f",
+              // textShadow: "2px 2px 0px #00000050f",
             }}
           >
             <a
