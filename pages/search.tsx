@@ -41,11 +41,10 @@ export default function Search(props: { allPosts: Post[] }) {
             className="p-2 bg-indigo-800 items-center text-indigo-100 leading-none rounded-full flex lg:inline-flex"
             role="alert"
           >
-            <span className="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">
-              {post!.date}
+            <span className="font-regular ml-2 mr-2 text-left flex-auto">
+              {post!.title} <small className="mx-4 align-middle inline-block text-xs text-indigo-300">{post!.date}</small>
             </span>
-            <span className="font-regular mr-2 text-left flex-auto">
-              {post!.title}
+            <span className="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-regular mr-0">{post?.tags}
             </span>
           </a>
         </div>
@@ -53,11 +52,13 @@ export default function Search(props: { allPosts: Post[] }) {
     });
     if (R.length === 0) {
       R = (
+        <div className="text-center">
         <div
           className="p-4 mb-4 text-sm text-red-300 rounded-lg bg-red-900 inline-block"
           role="alert"
         >
           <span className="font-medium">Sorry!</span> No results were found.
+        </div>
         </div>
       );
     } else {
@@ -65,7 +66,7 @@ export default function Search(props: { allPosts: Post[] }) {
     }
     return (
       <div className="container mx-auto text-white px-10 py-10 mt-4">
-        <div className="xtext-lg xfont-bold pb-10 pl-2">
+        <div className="xtext-lg xfont-bold pb-5 pl-2">
           <form
             action="/search"
             className="block relative mx-auto max-w-[500px]"
@@ -102,7 +103,7 @@ export default function Search(props: { allPosts: Post[] }) {
               <li className="mr-2">
                 <a
                   href="#"
-                  className="inline-block p-4 text-indigo-600 border-b-2 border-indigo-600 rounded-t-lg active !text-indigo-500 !border-indigo-500"
+                  className="inline-block p-3 text-indigo-600 border-b-2 border-indigo-600 rounded-t-lg active !text-gray-400 !border-gray-400"
                   aria-current="page"
                 >
                   Results
@@ -110,7 +111,7 @@ export default function Search(props: { allPosts: Post[] }) {
               </li>
             </ul>
           </div>
-          <div className="text-zinc-500 pt-4">
+          <div className="text-gray-400 text-sm pt-4">
             {results.length} result(s) for "{router.query.q}"
           </div>
         </div>

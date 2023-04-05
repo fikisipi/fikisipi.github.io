@@ -26,7 +26,8 @@ export function Header() {
             className="relative left-[50px]"
           >
             <img
-              src={"/logo2.svg "}
+              src={"/logo2.svg"}
+              height="35"
               className="h-[35px] pointer-events-none"
               alt="fikisipi"
             />
