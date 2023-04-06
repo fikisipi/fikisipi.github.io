@@ -26,12 +26,17 @@ export default function Search(props: { allPosts: Post[] }) {
   useEffect(() => {
     let m = new MiniSearch({
       fields: ["title", "markdown", "tags"],
+      searchOptions: {
+        boost: {title: 2},
+        fuzzy: 0.2,
+        prefix: true
+      }
     });
     m.addAll(props.allPosts.map((x) => ({ ...x, id: x.slug })));
     setSearch(m);
   }, [router.asPath]);
   if (index != null && typeof router.query.q == "string") {
-    let results = index.search(router.query.q);
+    let results = index.search(router.query.q, {});
     let R: any = results.map((x) => {
       let post = props.allPosts.find((post) => post.slug === x.id);
       return (
@@ -78,7 +83,7 @@ export default function Search(props: { allPosts: Post[] }) {
             <input
               id="qq"
               name="q"
-              className="z-20 outline-indigo-700/[0.5] rounded-lg w-full block bg-white/[0.1] py-[9px] px-4 font-normal text-sm"
+              className="z-20 outline-indigo-700/[0.5] rounded-lg w-full block bg-white/[0.2] py-[9px] px-4 font-normal text-sm"
             />
             <button
               type="submit"

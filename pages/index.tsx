@@ -78,7 +78,7 @@ export default function A(props: StaticProps) {
       </Head>{" "}
       <div
         className={
-          "container px-4 mx-auto my-6 text-center text-lg font-light text-gray-400 " +
+          "container px-4 mx-auto my-6 text-center text-lg font-light text-gray-200 " +
           inter.className
         }
       >
