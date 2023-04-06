@@ -12,17 +12,16 @@ export default function Document() {
         <link rel="stylesheet" href="https://use.typekit.net/jvr1gjm.css" />
       </Head>
       <body>
-        <div className="absolute z-1 left-0 top-0 right-0 overflow-hidden">
+        <div className="absolute z-1 left-0 top-0 right-0 overflow-hidden select-none pointer-events-none">
           <img
             src="/slopes.png"
             width="1800"
             height="608"
-            className="animate-pulse"
+            alt=""
+            className="bg-grad animate-pulsfe select-none pointer-events-none"
             style={{
-              // width: "auto",
-              // height: "600px",
+              animation: `filter-animation 3s infinite`,
               position: "relative",
-              // top: -20,
               top: -250,
               left: "calc( ( 100vw - 1800px ) * 0.5 )",
               width: "1800px",

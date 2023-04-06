@@ -10,15 +10,25 @@ import * as marked from "marked";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-export function PostComponent(props: {
-  post: Post;
-  prevPost?: Post;
-  renderContent?: boolean;
-  renderTitle?: boolean;
-  footer?: boolean;
-  hideTitle?: boolean;
-}) {
-  const { post } = props;
+export function PostComponent(
+  props: {
+    post: Post;
+    prevPost?: Post;
+    renderContent?: boolean;
+    renderTitle?: boolean;
+    footer?: boolean;
+    hideTitle?: boolean;
+  } & React.HTMLProps<HTMLDivElement>
+) {
+  let {
+    post,
+    prevPost,
+    renderContent,
+    renderTitle,
+    footer,
+    hideTitle,
+    ...extra
+  } = props;
 
   // Was previously used for comments:
   // const loadScript = () => {
@@ -36,19 +46,14 @@ export function PostComponent(props: {
   //   loadScript();
   // }, []);
 
-  const singlePage =
-    props.renderContent !== false && props.renderTitle === false;
-  let footer = <></>;
-  if (singlePage) {
-    footer = <></>;
-  }
-
   return (
     <>
       <article
         title={post.title}
         className={
           "px-0 md:rounded-t-lg flexx gap-4 <md:items-center md:border-[1px] md:border-zinc-800 " +
+          (extra.className || "") +
+          " " +
           (props.renderTitle === false ? "hidden" : "")
         }
         style={{
@@ -114,7 +119,6 @@ export function PostComponent(props: {
           {/* </div> */}
         </div>
       </div>
-      {footer}
     </>
   );
 }

@@ -48,6 +48,12 @@ export default function PostPage(props: {
   allTags?: string[];
 }) {
   const { prevPost } = props;
+  useEffect(() => {
+    if (typeof window == "undefined") return;
+    let grad = document.querySelector(".bg-grad")! as HTMLDivElement;
+    grad.classList.add("single-post");
+    return () => (grad ? grad.classList.remove("single-post") : undefined);
+  }, []);
 
   return (
     <>
@@ -61,7 +67,11 @@ export default function PostPage(props: {
       {/* <div className="container mx-auto mt-0 lgx:w-[900px]">
       <h1 className="text-3xl font-bold py-0 text-center">{props.post.title}</h1>
       </div> */}
-      <Container style={{ borderTopWidth: 0 }}>
+      {/* <div className="container mx-auto !max-w-[800px]" style={{colorScheme: "light"}}>
+      <PostComponent className="!border-t-0 !rounded-[0]" post={props.post} {...{ prevPost }} />
+      <Sidebar allTags={props.allTags} />
+      </div> */}
+      <Container>
         <div className="text-black md:pt-2" style={{ colorScheme: "light" }}>
           <PostComponent post={props.post} {...{ prevPost }} />
         </div>
@@ -69,9 +79,4 @@ export default function PostPage(props: {
       </Container>
     </>
   );
-  return <div>{JSON.stringify(props)}</div>;
-  //   let post = parsePostFile(slug);
-  //     if(!post) return <div>Not found</div>
-
-  //   return <PostComponent post={post }/>
 }

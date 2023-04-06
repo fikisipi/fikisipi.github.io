@@ -2,7 +2,7 @@ export function Header() {
   return (
     <div
       className={
-        "sticky py-4 w-full top-0 border-b-[1px] border-[#ffffff28] z-40 bg-[#00000090]"
+        "sticky py-4 w-full top-0 border-b-[1px] border-[#ffffff28] z-40 bg-[#00000075]"
       }
       style={{
         // backgroundf:
