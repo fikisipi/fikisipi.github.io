@@ -9,7 +9,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="stylesheet" href="https://use.typekit.net/jvr1gjm.css" />
+        {/* <link rel="stylesheet" href="https://use.typekit.net/jvr1gjm.css" /> */}
       </Head>
       <body>
         <div className="absolute z-1 left-0 top-0 right-0 overflow-hidden select-none pointer-events-none">
