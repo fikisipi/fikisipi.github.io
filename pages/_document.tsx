@@ -9,7 +9,9 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* <link rel="stylesheet" href="https://use.typekit.net/jvr1gjm.css" /> */}
+        <link rel="apple-touch-icon" sizes="180x180" href="/180w/favicon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/32w/favicon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/192w/favicon.png" />
       </Head>
       <body>
         <div className="absolute z-1 left-0 top-0 right-0 overflow-hidden select-none pointer-events-none">
