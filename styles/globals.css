@@ -52,6 +52,9 @@ body {
   color: #414f62;
   /* letter-spacing: 0.32px; */
 }
+.ppost a {
+  color: #2563EB;
+}
 .ppost ul {
   list-style-type: square;
   margin-left: 20px;

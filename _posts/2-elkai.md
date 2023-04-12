@@ -1,6 +1,7 @@
 title: elkai - a TSP solver
 tags: ["python", "compsci"]
 image: somegraph2.png
+desc: "elkai is an TSP solver I wrote"
 ---
 
 Check out the [elkai](https://github.com/fikisipi/elkai) library.
