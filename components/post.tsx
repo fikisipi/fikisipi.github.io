@@ -99,7 +99,7 @@ export function PostComponent(
                 <a
                   href={"/tag/" + x}
                   key={x}
-                  className="hover:text-zinc-400 text-xs px-[5px] py-[6px] text-zinc-500 bfg-gray-200 border-[1px] border-zinc-800 font-regular text-zinc-400 rounded-[4px] mr-1"
+                  className="hover:text-zinc-400 text-sm px-[5px] py-[6px] text-zinc-500 bfg-gray-200 border-[1px] border-zinc-700 font-regular text-zinc-400 rounded-[4px] mr-1"
                 >
                   {x}
                 </a>

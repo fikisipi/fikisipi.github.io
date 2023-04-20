@@ -25,7 +25,7 @@ export default function Document() {
             style={{
               animation: `filter-animation 3s infinite`,
               position: "relative",
-              top: -250,
+              top: -300,
               left: "calc( ( 100vw - 1800px ) * 0.5 )",
               width: "1800px",
               minWidth: "1800px",
