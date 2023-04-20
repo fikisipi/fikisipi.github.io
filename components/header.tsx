@@ -7,8 +7,8 @@ export function Header() {
       style={{
         // backgroundf:
         //   "radial-gradient(at center top, #4e4363a0, #1D1726A0, #000000a0)",
-        // backdropFilter: "blur(3px)",
-        // WebkitBackdropFilter: "blur(3px)",
+        backdropFilter: "blur(3px)",
+        WebkitBackdropFilter: "blur(3px)",
       }}
     >
       <div
