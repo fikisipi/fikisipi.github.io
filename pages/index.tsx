@@ -110,11 +110,11 @@ export default function A(props: StaticProps) {
         }
       >
          <div className={"text-left text-md container xpx-4 mx-auto mt-6"}>
-        <div
+          <div
           className={
             "grid lg:grid-cols-2 gap-4 font-light text-[#ffffffc0] text-xl leading-loose"
           }
-        >
+          >
           <div
             className={
               "mt-10 py-5 px-4 rounded-lg border-[1px] border-[#ffffff28] shadow-lgx"
