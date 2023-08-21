@@ -214,11 +214,6 @@ export default function A(props: StaticProps) {
                 <strong className={"font-bold"}>elkai</strong>: Travelling Salesman
                 solver for Python
               </a>
-              <br/>
-              <a href={"https://polartask.com"}>
-                <Chev />
-                <strong className="font-bold">PolarTask</strong>: a task tracker
-              </a>
               <br />
               <a
                 href={"https://twitter.com/mkrobot/status/1165955815389433856"}
@@ -229,7 +224,12 @@ export default function A(props: StaticProps) {
                 </strong>{": "}
                 car tracking via ML processing of live cameras
               </a>{" "}
-              <br />
+              <br />          
+              <a href={"https://polartask.com"} className="line-through">
+                <Chev />
+                <strong className="font-bold">PolarTask</strong>: a task tracker
+              </a>
+              <br/>
             </div>
           </div>
           <div
