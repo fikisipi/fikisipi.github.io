@@ -90,15 +90,15 @@ export default function A(props: StaticProps) {
           name="og:image"
         />
         <meta
-          content="distributed programming &amp; web development"
+          content="Computer and data science"
           name="twitter:description"
         />
         <meta
-          content="distributed programming &amp; web development"
+          content="Computer and data science"
           name="description"
         />
         <meta
-          content="distributed programming &amp; web development"
+          content="Computer and data science"
           name="og:description"
         />
         <meta content="fikisipi" name="og:title" />
@@ -179,6 +179,11 @@ export default function A(props: StaticProps) {
               <a href="https://twitter.com/fikisipi">
                 <Ico h="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAB7UExURQAAAByX7xyb8B2b8B2a8B2a8RiX7xCf7xua7xuZ7x6b8RyZ7x2a7x6a8CCX7xua7xyb8Byb8R2c8B6b8Bya8B2c7x2a7xya7xmZ7xmc7yCf7x6b7xyb7xya7yCa7x6c8B6Z7xyb7x6b7x2a7x2a7x2Z7yCf7x2b8P///4AehSoAAAAndFJOUwBAv+/fnyAQYHB/gLDfIDDPf9/vr1BgkFBQIHDgwDDfcECA0MCgEMgbL8UAAAABYktHRCi9sLWyAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5wQMEAoaY2gqYgAAAMpJREFUOMvVkt0SgiAQhVEkNf9SFMrKNK19/zfMQhGEmi7rXMGej90zOyD0n3JcDB7ZPE++qASh6m9BKApdMpViUIgApJI0E7UdQC6BQvq0LCoJgOdMAUARmx7x183drybAYe5aU1HAZejkCpDOgH8Eq/wZOLmFzccyOLc3OEugsQN8WY49Q6asl10+TRjVcmoATAU6swFBmq5rP0l1ALFeBzrznzT0XQBh53ixqf6+CiKi7Xow5g+abRmP6jbuxwi0v7X37372b+kBHx03HPz+BJEAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDQtMTJUMTY6MTA6MjUrMDA6MDAw8+HBAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTA0LTEyVDE2OjEwOjI1KzAwOjAwQa5ZfQAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wNC0xMlQxNjoxMDoyNiswMDowMCdTYj8AAAAASUVORK5CYII=" />
                 fikisipi on Twitter
+              </a>
+               <br/>
+              <a href="https://www.linkedin.com/in/filip-dimitrovski-fikisipi/">
+                <Ico h="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjU2IDI1NiI+PGcgZmlsbD0ibm9uZSI+PHJlY3Qgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIGZpbGw9IiNmZmYiIHJ4PSI2MCIvPjxyZWN0IHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiBmaWxsPSIjMEE2NkMyIiByeD0iNjAiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTg0LjcxNSAyMTcuNjg1aDI5LjI3YTQgNCAwIDAgMCA0LTMuOTk5bC4wMTUtNjEuODQyYzAtMzIuMzIzLTYuOTY1LTU3LjE2OC00NC43MzgtNTcuMTY4Yy0xNC4zNTktLjUzNC0yNy45IDYuODY4LTM1LjIwNyAxOS4yMjhhLjMyLjMyIDAgMCAxLS41OTUtLjE2MVYxMDEuNjZhNCA0IDAgMCAwLTQtNGgtMjcuNzc3YTQgNCAwIDAgMC00IDR2MTEyLjAyYTQgNCAwIDAgMCA0IDRoMjkuMjY4YTQgNCAwIDAgMCA0LTR2LTU1LjM3M2MwLTE1LjY1NyAyLjk3LTMwLjgyIDIyLjM4MS0zMC44MmMxOS4xMzUgMCAxOS4zODMgMTcuOTE2IDE5LjM4MyAzMS44MzR2NTQuMzY0YTQgNCAwIDAgMCA0IDRaTTM4IDU5LjYyN2MwIDExLjg2NSA5Ljc2NyAyMS42MjcgMjEuNjMyIDIxLjYyN2MxMS44NjItLjAwMSAyMS42MjMtOS43NjkgMjEuNjIzLTIxLjYzMUM4MS4yNTMgNDcuNzYxIDcxLjQ5MSAzOCA1OS42MjggMzhDNDcuNzYyIDM4IDM4IDQ3Ljc2MyAzOCA1OS42MjdabTYuOTU5IDE1OC4wNThoMjkuMzA3YTQgNCAwIDAgMCA0LTRWMTAxLjY2YTQgNCAwIDAgMC00LTRINDQuOTU5YTQgNCAwIDAgMC00IDR2MTEyLjAyNWE0IDQgMCAwIDAgNCA0WiIvPjwvZz48L3N2Zz4=" />
+                LinkedIn
               </a>
             </div>
           </div>
