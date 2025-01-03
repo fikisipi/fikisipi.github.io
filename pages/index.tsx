@@ -137,6 +137,7 @@ export default function A(props: StaticProps) {
               >
                 <path d="M14.615 1.595a.75.75 0 01.359.852L12.982 9.75h7.268a.75.75 0 01.548 1.262l-10.5 11.25a.75.75 0 01-1.272-.71l1.992-7.302H3.75a.75.75 0 01-.548-1.262l10.5-11.25a.75.75 0 01.913-.143z" />
               </svg>
+              Filip Dimitrovski
             </h1>
             I'm interested in computer and data science, as well prediction markets and startups.
             <div className="text-center my-8">
@@ -182,7 +183,7 @@ export default function A(props: StaticProps) {
                <br/>
               <a href="https://www.linkedin.com/in/filip-dimitrovski-fikisipi/">
                 <Ico h="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjU2IDI1NiI+PGcgZmlsbD0ibm9uZSI+PHJlY3Qgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIGZpbGw9IiNmZmYiIHJ4PSI2MCIvPjxyZWN0IHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiBmaWxsPSIjMEE2NkMyIiByeD0iNjAiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTg0LjcxNSAyMTcuNjg1aDI5LjI3YTQgNCAwIDAgMCA0LTMuOTk5bC4wMTUtNjEuODQyYzAtMzIuMzIzLTYuOTY1LTU3LjE2OC00NC43MzgtNTcuMTY4Yy0xNC4zNTktLjUzNC0yNy45IDYuODY4LTM1LjIwNyAxOS4yMjhhLjMyLjMyIDAgMCAxLS41OTUtLjE2MVYxMDEuNjZhNCA0IDAgMCAwLTQtNGgtMjcuNzc3YTQgNCAwIDAgMC00IDR2MTEyLjAyYTQgNCAwIDAgMCA0IDRoMjkuMjY4YTQgNCAwIDAgMCA0LTR2LTU1LjM3M2MwLTE1LjY1NyAyLjk3LTMwLjgyIDIyLjM4MS0zMC44MmMxOS4xMzUgMCAxOS4zODMgMTcuOTE2IDE5LjM4MyAzMS44MzR2NTQuMzY0YTQgNCAwIDAgMCA0IDRaTTM4IDU5LjYyN2MwIDExLjg2NSA5Ljc2NyAyMS42MjcgMjEuNjMyIDIxLjYyN2MxMS44NjItLjAwMSAyMS42MjMtOS43NjkgMjEuNjIzLTIxLjYzMUM4MS4yNTMgNDcuNzYxIDcxLjQ5MSAzOCA1OS42MjggMzhDNDcuNzYyIDM4IDM4IDQ3Ljc2MyAzOCA1OS42MjdabTYuOTU5IDE1OC4wNThoMjkuMzA3YTQgNCAwIDAgMCA0LTRWMTAxLjY2YTQgNCAwIDAgMC00LTRINDQuOTU5YTQgNCAwIDAgMC00IDR2MTEyLjAyNWE0IDQgMCAwIDAgNCA0WiIvPjwvZz48L3N2Zz4=" />
-                LinkedIn
+                Filip Dimitrovski on LinkedIn
               </a>
             </div>
           </div>
